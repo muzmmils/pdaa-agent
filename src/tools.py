@@ -1,154 +1,312 @@
-"""
-Tools for the PDAA agent system.
-Provides 6 core tools for patient data analysis and manipulation.
-"""
-
 import json
-from typing import Dict, List, Any
-from pathlib import Path
+from datetime import datetime, timedelta
+from typing import Dict, List, Any, Optional
+import random  # For simulation
 
-
-class PatientDataTool:
-    """Tool for loading and querying patient data."""
+class IntakeTool:
+    """Parses and processes discharge plans."""
     
-    def __init__(self, data_path: str = "data/patients.json"):
-        self.data_path = Path(data_path)
-        self.patients: List[Dict[str, Any]] = []
-        self.load_data()
-    
-    def load_data(self):
-        """Load patient data from JSON file."""
-        if self.data_path.exists():
-            with open(self.data_path, 'r') as f:
-                self.patients = json.load(f)
-    
-    def get_patient_by_id(self, patient_id: str) -> Dict[str, Any]:
-        """Retrieve patient by ID."""
-        for patient in self.patients:
-            if patient.get("id") == patient_id:
-                return patient
-        return {}
-    
-    def get_all_patients(self) -> List[Dict[str, Any]]:
-        """Get all patients."""
-        return self.patients
-
-
-class SearchTool:
-    """Tool for searching patient records."""
-    
-    def __init__(self, data_tool: PatientDataTool):
-        self.data_tool = data_tool
-    
-    def search_by_field(self, field: str, value: Any) -> List[Dict[str, Any]]:
-        """Search patients by a specific field."""
-        results = []
-        for patient in self.data_tool.get_all_patients():
-            if patient.get(field) == value:
-                results.append(patient)
-        return results
-    
-    def search_by_text(self, query: str) -> List[Dict[str, Any]]:
-        """Search patients by text in any field."""
-        query_lower = query.lower()
-        results = []
-        for patient in self.data_tool.get_all_patients():
-            patient_str = json.dumps(patient).lower()
-            if query_lower in patient_str:
-                results.append(patient)
-        return results
-
-
-class AnalysisTool:
-    """Tool for analyzing patient data."""
-    
-    def __init__(self, data_tool: PatientDataTool):
-        self.data_tool = data_tool
-    
-    def calculate_statistics(self) -> Dict[str, Any]:
-        """Calculate basic statistics on patient data."""
-        patients = self.data_tool.get_all_patients()
-        if not patients:
-            return {}
+    def parse_discharge_plan(self, patient_data: Dict) -> Dict[str, Any]:
+        """Extract and structure discharge plan information."""
+        plan = patient_data.get("discharge_plan", {})
         
-        ages = [p.get("age", 0) for p in patients if "age" in p]
         return {
-            "total_patients": len(patients),
-            "average_age": sum(ages) / len(ages) if ages else 0,
-            "min_age": min(ages) if ages else 0,
-            "max_age": max(ages) if ages else 0
+            "patient_id": patient_data["id"],
+            "patient_name": patient_data["name"],
+            "medications": self._parse_medications(plan.get("medications", [])),
+            "therapy": self._parse_therapy(plan.get("therapy", [])),
+            "diet": plan.get("diet", []),
+            "follow_up_date": plan.get("follow_up"),
+            "risk_level": patient_data.get("risk", "unknown"),
+            "condition": patient_data.get("condition", "")
+        }
+    
+    def _parse_medications(self, meds: List[str]) -> List[Dict]:
+        """Parse medication strings into structured data."""
+        parsed = []
+        for med in meds:
+            parts = med.split(" - ")
+            parsed.append({
+                "name": parts[0] if parts else med,
+                "frequency": parts[1] if len(parts) > 1 else "as prescribed"
+            })
+        return parsed
+    
+    def _parse_therapy(self, therapies: List[str]) -> List[Dict]:
+        """Parse therapy strings into structured data."""
+        parsed = []
+        for therapy in therapies:
+            parts = therapy. split(" - ")
+            parsed. append({
+                "activity": parts[0] if parts else therapy,
+                "frequency": parts[1] if len(parts) > 1 else "as recommended"
+            })
+        return parsed
+
+
+class ReminderTool:
+    """Generates personalized reminder messages."""
+    
+    def __init__(self):
+        self.templates = {
+            "medication": "💊 Reminder: Time to take your {med_name}.  {frequency}.",
+            "therapy": "🏃 Reminder: Don't forget your {activity} today! ",
+            "follow_up": "📅 Your follow-up appointment is on {date}. Please confirm attendance.",
+            "general": "👋 Hi {name}! Just checking in on your recovery. How are you feeling today? ",
+            "encouragement": "🌟 Great job staying on track, {name}! Keep up the good work!"
+        }
+    
+    def generate_medication_reminder(self, patient_name: str, medication: Dict) -> str:
+        """Generate medication reminder."""
+        return self.templates["medication"].format(
+            med_name=medication["name"],
+            frequency=medication["frequency"]
+        )
+    
+    def generate_therapy_reminder(self, patient_name: str, therapy: Dict) -> str:
+        """Generate therapy reminder."""
+        return self.templates["therapy"].format(activity=therapy["activity"])
+    
+    def generate_follow_up_reminder(self, patient_name: str, date: str) -> str:
+        """Generate follow-up appointment reminder."""
+        return self.templates["follow_up"].format(date=date)
+    
+    def generate_check_in(self, patient_name: str) -> str:
+        """Generate general check-in message."""
+        return self.templates["general"].format(name=patient_name)
+    
+    def generate_encouragement(self, patient_name: str) -> str:
+        """Generate encouragement message."""
+        return self.templates["encouragement"].format(name=patient_name)
+
+
+class AlertTool:
+    """Handles escalation alerts to healthcare providers."""
+    
+    def __init__(self):
+        self. alert_log: List[Dict] = []
+    
+    def trigger_alert(self, patient_id: str, alert_type: str, 
+                      severity: str, message: str, details: Dict = None) -> Dict:
+        """Trigger an escalation alert."""
+        alert = {
+            "alert_id": f"ALT-{len(self.alert_log) + 1:04d}",
+            "patient_id": patient_id,
+            "type": alert_type,
+            "severity": severity,  # LOW, MEDIUM, HIGH, CRITICAL
+            "message": message,
+            "details": details or {},
+            "timestamp": datetime.now().isoformat(),
+            "status": "TRIGGERED"
+        }
+        
+        self.alert_log.append(alert)
+        self._send_alert(alert)
+        
+        return alert
+    
+    def _send_alert(self, alert: Dict):
+        """Simulate sending alert (print/log/email)."""
+        severity_emoji = {
+            "LOW": "🟢",
+            "MEDIUM": "🟡", 
+            "HIGH": "🟠",
+            "CRITICAL": "🔴"
+        }
+        
+        emoji = severity_emoji.get(alert["severity"], "⚪")
+        print(f"\n{emoji} ALERT [{alert['severity']}] - Patient {alert['patient_id']}")
+        print(f"   Type: {alert['type']}")
+        print(f"   Message: {alert['message']}")
+        print(f"   Time: {alert['timestamp']}\n")
+    
+    def get_alert_history(self, patient_id: str = None) -> List[Dict]:
+        """Get alert history, optionally filtered by patient."""
+        if patient_id:
+            return [a for a in self.alert_log if a["patient_id"] == patient_id]
+        return self.alert_log
+
+
+class AdherenceScoreTool:
+    """Calculates patient adherence scores."""
+    
+    def calculate_score(self, tasks_completed: int, tasks_total: int,
+                        medication_taken: bool = True,
+                        therapy_done: bool = True,
+                        diet_followed: bool = True) -> Dict[str, Any]:
+        """Calculate adherence score (0-100)."""
+        
+        # Base score from task completion
+        if tasks_total > 0:
+            task_score = (tasks_completed / tasks_total) * 60
+        else:
+            task_score = 60
+        
+        # Bonus points for specific adherence
+        med_bonus = 15 if medication_taken else 0
+        therapy_bonus = 15 if therapy_done else 0
+        diet_bonus = 10 if diet_followed else 0
+        
+        total_score = min(100, task_score + med_bonus + therapy_bonus + diet_bonus)
+        
+        return {
+            "total_score": round(total_score, 1),
+            "breakdown": {
+                "task_completion": round(task_score, 1),
+                "medication_adherence": med_bonus,
+                "therapy_adherence": therapy_bonus,
+                "diet_adherence": diet_bonus
+            },
+            "grade": self._score_to_grade(total_score)
+        }
+    
+    def _score_to_grade(self, score: float) -> str:
+        """Convert score to letter grade."""
+        if score >= 90:
+            return "A"
+        elif score >= 80:
+            return "B"
+        elif score >= 70:
+            return "C"
+        elif score >= 60:
+            return "D"
+        else:
+            return "F"
+    
+    def simulate_daily_adherence(self, risk_level: str) -> Dict[str, bool]:
+        """Simulate patient adherence based on risk level (for testing)."""
+        # Higher risk patients have lower adherence probability
+        adherence_prob = {
+            "low": 0.9,
+            "medium": 0.75,
+            "high": 0.6
+        }
+        
+        prob = adherence_prob.get(risk_level, 0.7)
+        
+        return {
+            "medication_taken": random.random() < prob,
+            "therapy_done": random.random() < (prob - 0.1),
+            "diet_followed": random.random() < (prob - 0.05),
+            "tasks_completed": random.randint(int(prob * 3), 5),
+            "tasks_total": 5
         }
 
 
-class UpdateTool:
-    """Tool for updating patient records."""
+class RiskStratifierTool:
+    """Stratifies patient risk levels."""
     
-    def __init__(self, data_tool: PatientDataTool):
-        self.data_tool = data_tool
-    
-    def update_patient(self, patient_id: str, updates: Dict[str, Any]) -> bool:
-        """Update a patient record."""
-        for i, patient in enumerate(self.data_tool.patients):
-            if patient.get("id") == patient_id:
-                self.data_tool.patients[i].update(updates)
-                return True
-        return False
-    
-    def save_data(self) -> bool:
-        """Save updated patient data to file."""
-        try:
-            with open(self.data_tool.data_path, 'w') as f:
-                json.dump(self.data_tool.patients, f, indent=2)
-            return True
-        except Exception as e:
-            print(f"Error saving data: {e}")
-            return False
-
-
-class ValidationTool:
-    """Tool for validating patient data."""
-    
-    def validate_patient(self, patient: Dict[str, Any]) -> Dict[str, Any]:
-        """Validate a patient record."""
-        errors = []
-        warnings = []
+    def stratify(self, patient_data: Dict, adherence_history: List[float]) -> Dict[str, Any]:
+        """Determine risk classification based on multiple factors."""
         
-        required_fields = ["id", "name", "age"]
-        for field in required_fields:
-            if field not in patient:
-                errors.append(f"Missing required field: {field}")
+        # Base risk from patient profile
+        base_risk = patient_data.get("risk", "medium")
+        base_score = {"low": 1, "medium": 2, "high": 3}. get(base_risk, 2)
         
-        if "age" in patient and not isinstance(patient["age"], (int, float)):
-            errors.append("Age must be a number")
+        # Adherence trend factor
+        adherence_factor = 0
+        if len(adherence_history) >= 3:
+            recent_avg = sum(adherence_history[-3:]) / 3
+            if recent_avg < 50:
+                adherence_factor = 2
+            elif recent_avg < 70:
+                adherence_factor = 1
         
-        if "age" in patient and (patient["age"] < 0 or patient["age"] > 150):
-            warnings.append("Age seems unusual")
+        # Age factor
+        age = patient_data.get("age", 50)
+        age_factor = 1 if age > 65 else 0
+        
+        # Calculate final risk score
+        total_score = base_score + adherence_factor + age_factor
+        
+        # Determine risk class
+        if total_score >= 5:
+            risk_class = "HIGH"
+        elif total_score >= 3:
+            risk_class = "MEDIUM"
+        else:
+            risk_class = "LOW"
         
         return {
-            "valid": len(errors) == 0,
-            "errors": errors,
-            "warnings": warnings
+            "risk_class": risk_class,
+            "risk_score": total_score,
+            "factors": {
+                "base_risk": base_risk,
+                "adherence_trend": "declining" if adherence_factor > 0 else "stable",
+                "age_risk": "elevated" if age_factor > 0 else "normal"
+            },
+            "recommendation": self._get_recommendation(risk_class)
         }
+    
+    def _get_recommendation(self, risk_class: str) -> str:
+        """Get recommendation based on risk class."""
+        recommendations = {
+            "HIGH": "Immediate intervention recommended.  Consider care team escalation.",
+            "MEDIUM": "Increased monitoring advised. Send additional reminders.",
+            "LOW": "Continue standard monitoring protocol."
+        }
+        return recommendations. get(risk_class, "Continue monitoring.")
 
 
-class ReportTool:
-    """Tool for generating reports from patient data."""
+class RecommendationEngine:
+    """Generates next-action recommendations."""
     
-    def __init__(self, data_tool: PatientDataTool):
-        self.data_tool = data_tool
+    def generate_recommendation(self, risk_class: str, adherence_score: float,
+                                days_since_discharge: int, alerts_sent: int) -> Dict[str, Any]:
+        """Generate next action recommendation."""
+        
+        actions = []
+        priority = "NORMAL"
+        
+        # High risk + low adherence = escalate
+        if risk_class == "HIGH" and adherence_score < 60:
+            actions.append("ESCALATE_TO_CARE_TEAM")
+            actions.append("SCHEDULE_PHONE_CALL")
+            priority = "URGENT"
+        
+        # Medium risk or declining adherence
+        elif risk_class == "MEDIUM" or adherence_score < 70:
+            actions.append("SEND_PERSONALIZED_REMINDER")
+            actions.append("INCREASE_CHECK_IN_FREQUENCY")
+            priority = "HIGH"
+        
+        # Good adherence
+        elif adherence_score >= 80:
+            actions.append("SEND_ENCOURAGEMENT")
+            actions.append("CONTINUE_STANDARD_MONITORING")
+        
+        # Default
+        else:
+            actions.append("SEND_GENTLE_REMINDER")
+            actions. append("CONTINUE_MONITORING")
+        
+        # Check if follow-up is approaching
+        if days_since_discharge >= 5:
+            actions.append("SEND_FOLLOW_UP_REMINDER")
+        
+        return {
+            "priority": priority,
+            "actions": actions,
+            "reasoning": self._generate_reasoning(risk_class, adherence_score),
+            "next_check": self._calculate_next_check(priority)
+        }
     
-    def generate_summary_report(self) -> str:
-        """Generate a summary report of all patients."""
-        patients = self.data_tool.get_all_patients()
-        report = f"Patient Summary Report\n"
-        report += f"=" * 50 + "\n"
-        report += f"Total Patients: {len(patients)}\n\n"
-        
-        for patient in patients:
-            report += f"ID: {patient.get('id', 'N/A')}\n"
-            report += f"Name: {patient.get('name', 'N/A')}\n"
-            report += f"Age: {patient.get('age', 'N/A')}\n"
-            report += f"Diagnosis: {patient.get('diagnosis', 'N/A')}\n"
-            report += "-" * 50 + "\n"
-        
-        return report
+    def _generate_reasoning(self, risk_class: str, score: float) -> str:
+        """Generate Chain-of-Thought reasoning for recommendation."""
+        reasoning = f"""
+        Analysis:
+        1. Patient risk classification: {risk_class}
+        2. Current adherence score: {score}/100
+        3. Score threshold analysis: {"BELOW" if score < 70 else "ABOVE"} acceptable range
+        4. Conclusion: {"Intervention needed" if risk_class == "HIGH" or score < 60 else "Continue monitoring"}
+        """
+        return reasoning. strip()
+    
+    def _calculate_next_check(self, priority: str) -> str:
+        """Calculate when next check should occur."""
+        intervals = {
+            "URGENT": "2 hours",
+            "HIGH": "6 hours", 
+            "NORMAL": "24 hours"
+        }
+        return intervals.get(priority, "24 hours")

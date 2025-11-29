@@ -1,9 +1,67 @@
 [
   {
     "id": "P001",
-    "name": "Sample Patient",
+    "name": "John Doe",
+    "age": 65,
+    "discharge_plan": {
+      "medications": ["Aspirin 75mg - daily", "Metformin 500mg - twice daily"],
+      "therapy": ["Physical therapy - 30 min daily", "Walking - 15 min twice daily"],
+      "diet": ["Low sodium", "Diabetic-friendly"],
+      "follow_up": "2025-12-05"
+    },
+    "risk": "high",
+    "condition": "Post cardiac surgery"
+  },
+  {
+    "id": "P002",
+    "name": "Jane Smith",
     "age": 45,
-    "diagnosis": "Sample diagnosis",
-    "notes": "This is a placeholder patient record"
+    "discharge_plan": {
+      "medications": ["Ibuprofen 400mg - as needed"],
+      "therapy": ["Rest", "Light stretching"],
+      "diet": ["Regular"],
+      "follow_up": "2025-12-10"
+    },
+    "risk": "low",
+    "condition": "Minor surgery recovery"
+  },
+  {
+    "id": "P003",
+    "name": "Robert Johnson",
+    "age": 72,
+    "discharge_plan": {
+      "medications": ["Warfarin 5mg - daily", "Lisinopril 10mg - daily", "Atorvastatin 20mg - daily"],
+      "therapy": ["Cardiac rehab - 3x week", "Blood pressure monitoring - daily"],
+      "diet": ["Heart-healthy", "Low cholesterol"],
+      "follow_up": "2025-12-03"
+    },
+    "risk": "high",
+    "condition": "Heart failure management"
+  },
+  {
+    "id": "P004",
+    "name": "Maria Garcia",
+    "age": 55,
+    "discharge_plan": {
+      "medications": ["Metformin 1000mg - twice daily", "Glipizide 5mg - daily"],
+      "therapy": ["Blood sugar monitoring - 3x daily", "Exercise - 20 min daily"],
+      "diet": ["Diabetic diet", "Low carb"],
+      "follow_up": "2025-12-08"
+    },
+    "risk": "medium",
+    "condition": "Diabetes management post-hospitalization"
+  },
+  {
+    "id": "P005",
+    "name": "David Lee",
+    "age": 38,
+    "discharge_plan": {
+      "medications": ["Antibiotic course - 7 days"],
+      "therapy": ["Wound care - daily", "Rest"],
+      "diet": ["High protein for healing"],
+      "follow_up": "2025-12-12"
+    },
+    "risk": "low",
+    "condition": "Post-appendectomy"
   }
 ]
