@@ -1,6 +1,7 @@
 import json
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
+from pathlib import Path
 import random  # For simulation
 
 class IntakeTool:
@@ -360,11 +361,191 @@ class PatientEngagementSimulator:
         return max(category_misses, key=category_misses.get)
 
 
+class EscalationLogger:
+    """Structured logging system for escalation actions and decisions."""
+    
+    def __init__(self, log_file: str = "data/escalation_logs.json"):
+        self.log_file = Path(log_file)
+        self.log_file.parent.mkdir(parents=True, exist_ok=True)
+        self.escalation_log: List[Dict] = []
+        self._load_existing_logs()
+    
+    def _load_existing_logs(self):
+        """Load existing logs from file if available."""
+        if self.log_file.exists():
+            try:
+                with open(self.log_file, 'r') as f:
+                    self.escalation_log = json.load(f)
+            except:
+                self.escalation_log = []
+    
+    def log_escalation(self, patient_id: str, patient_name: str, day: int,
+                       escalation_type: str, severity: str, trigger_reason: str,
+                       analysis_data: Dict, recommendation: Dict, 
+                       actions_taken: List[Dict]) -> Dict:
+        """Log a complete escalation event with all context."""
+        
+        escalation_entry = {
+            "log_id": f"ESC-{len(self.escalation_log) + 1:05d}",
+            "timestamp": datetime.now().isoformat(),
+            "patient": {
+                "id": patient_id,
+                "name": patient_name
+            },
+            "day": day,
+            "escalation": {
+                "type": escalation_type,  # CARE_TEAM, CLINICAL_REVIEW, INTERVENTION_NEEDED
+                "severity": severity,  # LOW, MEDIUM, HIGH, CRITICAL
+                "trigger_reason": trigger_reason
+            },
+            "clinical_context": {
+                "adherence_score": analysis_data.get("adherence_score", {}),
+                "risk_assessment": analysis_data.get("risk_assessment", {}),
+                "missed_tasks": analysis_data.get("missed_tasks", []),
+                "completion_rate": analysis_data.get("completion_rate", 0)
+            },
+            "decision": {
+                "priority": recommendation.get("priority", "NORMAL"),
+                "recommended_actions": recommendation.get("actions", []),
+                "reasoning": recommendation.get("reasoning", ""),
+                "next_check": recommendation.get("next_check", "24 hours")
+            },
+            "actions_taken": actions_taken,
+            "outcome": {
+                "status": "PENDING",  # PENDING, ACKNOWLEDGED, RESOLVED, ESCALATED_FURTHER
+                "response_time": None,
+                "resolution_notes": None
+            },
+            "metadata": {
+                "system_version": "1.0",
+                "alert_channel": "SYSTEM_LOG",
+                "requires_followup": severity in ["HIGH", "CRITICAL"]
+            }
+        }
+        
+        self.escalation_log.append(escalation_entry)
+        self._save_logs()
+        
+        return escalation_entry
+    
+    def log_action(self, patient_id: str, patient_name: str, day: int,
+                   action_type: str, action_details: Dict, 
+                   analysis_summary: Dict = None) -> Dict:
+        """Log a non-escalation action (reminder, encouragement, etc)."""
+        
+        action_entry = {
+            "log_id": f"ACT-{len(self.escalation_log) + 1:05d}",
+            "timestamp": datetime.now().isoformat(),
+            "patient": {
+                "id": patient_id,
+                "name": patient_name
+            },
+            "day": day,
+            "action": {
+                "type": action_type,  # REMINDER, ENCOURAGEMENT, CHECK_IN, EDUCATION
+                "details": action_details,
+                "automated": True
+            },
+            "context": analysis_summary or {},
+            "outcome": {
+                "status": "SENT",
+                "delivery_confirmed": False
+            }
+        }
+        
+        self.escalation_log.append(action_entry)
+        self._save_logs()
+        
+        return action_entry
+    
+    def update_outcome(self, log_id: str, status: str, 
+                       response_time: str = None, notes: str = None):
+        """Update the outcome of an escalation."""
+        for entry in self.escalation_log:
+            if entry.get("log_id") == log_id:
+                if "outcome" in entry:
+                    entry["outcome"]["status"] = status
+                    entry["outcome"]["response_time"] = response_time
+                    entry["outcome"]["resolution_notes"] = notes
+                    entry["outcome"]["resolved_at"] = datetime.now().isoformat()
+                self._save_logs()
+                return True
+        return False
+    
+    def _save_logs(self):
+        """Save logs to file."""
+        with open(self.log_file, 'w') as f:
+            json.dump(self.escalation_log, f, indent=2, default=str)
+    
+    def get_patient_escalations(self, patient_id: str) -> List[Dict]:
+        """Get all escalations for a specific patient."""
+        return [e for e in self.escalation_log 
+                if e.get("patient", {}).get("id") == patient_id 
+                and "escalation" in e]
+    
+    def get_pending_escalations(self) -> List[Dict]:
+        """Get all pending escalations requiring attention."""
+        return [e for e in self.escalation_log 
+                if e.get("outcome", {}).get("status") == "PENDING" 
+                and "escalation" in e]
+    
+    def get_escalations_by_severity(self, severity: str) -> List[Dict]:
+        """Get escalations by severity level."""
+        return [e for e in self.escalation_log 
+                if e.get("escalation", {}).get("severity") == severity]
+    
+    def generate_summary(self) -> Dict:
+        """Generate summary statistics of escalations."""
+        escalations = [e for e in self.escalation_log if "escalation" in e]
+        actions = [e for e in self.escalation_log if "action" in e]
+        
+        severity_counts = {}
+        for esc in escalations:
+            severity = esc.get("escalation", {}).get("severity", "UNKNOWN")
+            severity_counts[severity] = severity_counts.get(severity, 0) + 1
+        
+        action_counts = {}
+        for act in actions:
+            action_type = act.get("action", {}).get("type", "UNKNOWN")
+            action_counts[action_type] = action_counts.get(action_type, 0) + 1
+        
+        pending = len([e for e in escalations 
+                      if e.get("outcome", {}).get("status") == "PENDING"])
+        
+        return {
+            "total_escalations": len(escalations),
+            "total_actions": len(actions),
+            "by_severity": severity_counts,
+            "by_action_type": action_counts,
+            "pending_escalations": pending,
+            "resolution_rate": round(
+                (len(escalations) - pending) / len(escalations) * 100, 1
+            ) if escalations else 0
+        }
+    
+    def export_report(self, output_file: str = "data/escalation_report.json"):
+        """Export detailed escalation report."""
+        report = {
+            "report_generated": datetime.now().isoformat(),
+            "summary": self.generate_summary(),
+            "pending_escalations": self.get_pending_escalations(),
+            "high_priority": self.get_escalations_by_severity("HIGH") + 
+                           self.get_escalations_by_severity("CRITICAL"),
+            "all_logs": self.escalation_log
+        }
+        
+        with open(output_file, 'w') as f:
+            json.dump(report, f, indent=2, default=str)
+        
+        return report
+
+
 class AlertTool:
     """Handles escalation alerts to healthcare providers."""
     
-    def __init__(self):
+    def __init__(self, escalation_logger: 'EscalationLogger' = None):
         self. alert_log: List[Dict] = []
+        self.escalation_logger = escalation_logger
     
     def trigger_alert(self, patient_id: str, alert_type: str, 
                       severity: str, message: str, details: Dict = None) -> Dict:

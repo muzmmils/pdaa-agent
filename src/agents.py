@@ -211,11 +211,12 @@ class AnalyzerAgent(BaseAgent):
 class EscalatorAgent(BaseAgent):
     """Makes escalation decisions and takes action."""
     
-    def __init__(self, memory_manager: MemoryManager):
+    def __init__(self, memory_manager: MemoryManager, escalation_logger=None):
         super().__init__("EscalatorAgent", memory_manager)
-        self.alert_tool = AlertTool()
+        self.alert_tool = AlertTool(escalation_logger)
         self.recommendation_engine = RecommendationEngine()
         self.reminder_tool = ReminderTool()
+        self.escalation_logger = escalation_logger
     
     def decide_and_act(self, patient_data: Dict, analysis_result: Dict,
                        monitoring_result: Dict) -> Dict[str, Any]:
@@ -259,20 +260,81 @@ class EscalatorAgent(BaseAgent):
                 "ESCALATION",
                 alert["message"]
             )
+            
+            # Log structured escalation
+            if self.escalation_logger:
+                self.escalation_logger.log_escalation(
+                    patient_id=patient_data["id"],
+                    patient_name=patient_data["name"],
+                    day=day,
+                    escalation_type="CARE_TEAM_ESCALATION",
+                    severity="HIGH",
+                    trigger_reason=f"Low adherence ({adherence_score:.1f}%) with {risk_class} risk",
+                    analysis_data={
+                        "adherence_score": analysis_result["adherence_score"],
+                        "risk_assessment": analysis_result["risk_assessment"],
+                        "missed_tasks": monitoring_result.get("missed_tasks", []),
+                        "completion_rate": monitoring_result.get("adherence_data", {}).get("tasks_completed", 0)
+                    },
+                    recommendation=recommendation,
+                    actions_taken=actions_taken
+                )
         
         elif "SEND_PERSONALIZED_REMINDER" in recommendation["actions"]:
             reminder = self.reminder_tool.generate_check_in(patient_data["name"])
             actions_taken.append({"action": "REMINDER", "message": reminder})
             print(f"Sending reminder to {patient_data['name']}: {reminder}")
+            
+            # Log action
+            if self.escalation_logger:
+                self.escalation_logger.log_action(
+                    patient_id=patient_data["id"],
+                    patient_name=patient_data["name"],
+                    day=day,
+                    action_type="REMINDER",
+                    action_details={"message": reminder, "reason": "Moderate adherence concern"},
+                    analysis_summary={
+                        "adherence_score": adherence_score,
+                        "risk_class": risk_class
+                    }
+                )
         
         elif "SEND_ENCOURAGEMENT" in recommendation["actions"]:
             encouragement = self.reminder_tool. generate_encouragement(patient_data["name"])
             actions_taken.append({"action": "ENCOURAGEMENT", "message": encouragement})
             print(f"Sending encouragement to {patient_data['name']}: {encouragement}")
+            
+            # Log action
+            if self.escalation_logger:
+                self.escalation_logger.log_action(
+                    patient_id=patient_data["id"],
+                    patient_name=patient_data["name"],
+                    day=day,
+                    action_type="ENCOURAGEMENT",
+                    action_details={"message": encouragement, "reason": "Good adherence reinforcement"},
+                    analysis_summary={
+                        "adherence_score": adherence_score,
+                        "risk_class": risk_class
+                    }
+                )
         
         else:
             reminder = self.reminder_tool.generate_check_in(patient_data["name"])
             actions_taken.append({"action": "GENTLE_REMINDER", "message": reminder})
+            
+            # Log action
+            if self.escalation_logger:
+                self.escalation_logger.log_action(
+                    patient_id=patient_data["id"],
+                    patient_name=patient_data["name"],
+                    day=day,
+                    action_type="CHECK_IN",
+                    action_details={"message": reminder, "reason": "Routine check-in"},
+                    analysis_summary={
+                        "adherence_score": adherence_score,
+                        "risk_class": risk_class
+                    }
+                )
         
         # Update session
         session = self.memory_manager.get_session(patient_data["id"])

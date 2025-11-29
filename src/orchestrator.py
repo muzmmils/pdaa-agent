@@ -4,7 +4,7 @@ from typing import Dict, List, Any
 from pathlib import Path
 
 from .memory import MemoryManager
-from . tools import AdherenceScoreTool, DailyPlannerTool, PatientEngagementSimulator
+from . tools import AdherenceScoreTool, DailyPlannerTool, PatientEngagementSimulator, EscalationLogger
 from .agents import MonitorAgent, AnalyzerAgent, EscalatorAgent
 
 
@@ -14,10 +14,13 @@ class PDAAOrchestrator:
     def __init__(self, patients_file: str = "data/patients.json"):
         self.memory_manager = MemoryManager()
         
-        # Initialize agents
+        # Initialize escalation logger
+        self.escalation_logger = EscalationLogger()
+        
+        # Initialize agents with escalation logger
         self.monitor_agent = MonitorAgent(self.memory_manager)
         self.analyzer_agent = AnalyzerAgent(self.memory_manager)
-        self.escalator_agent = EscalatorAgent(self.memory_manager)
+        self.escalator_agent = EscalatorAgent(self.memory_manager, self.escalation_logger)
         
         # Load patients
         with open(patients_file, 'r') as f:
@@ -64,6 +67,9 @@ class PDAAOrchestrator:
         
         # Print final summary
         self._print_summary(results["summary"])
+        
+        # Generate and print escalation summary
+        self._print_escalation_summary()
         
         return results
     
@@ -197,6 +203,30 @@ class PDAAOrchestrator:
         
         print("=" * 60)
     
+    def _print_escalation_summary(self):
+        """Print escalation logs summary."""
+        summary = self.escalation_logger.generate_summary()
+        
+        print("\n" + "=" * 60)
+        print("ESCALATION & ACTION SUMMARY")
+        print("=" * 60)
+        print(f"Total Escalations: {summary['total_escalations']}")
+        print(f"Total Actions: {summary['total_actions']}")
+        print(f"Pending Escalations: {summary['pending_escalations']}")
+        print(f"Resolution Rate: {summary['resolution_rate']}%")
+        
+        if summary['by_severity']:
+            print("\nBy Severity:")
+            for severity, count in summary['by_severity'].items():
+                print(f"  {severity}: {count}")
+        
+        if summary['by_action_type']:
+            print("\nBy Action Type:")
+            for action_type, count in summary['by_action_type'].items():
+                print(f"  {action_type}: {count}")
+        
+        print("=" * 60)
+    
     def export_results(self, results: Dict, output_file: str = "simulation_results.json"):
         """Export results to JSON file."""
         
@@ -218,6 +248,10 @@ class PDAAOrchestrator:
             json.dump(cleaned_results, f, indent=2, default=str)
         
         print(f"\nResults exported to: {output_path}")
+        
+        # Export escalation report
+        self.escalation_logger.export_report("data/escalation_report.json")
+        print("Escalation report exported to: data/escalation_report.json")
     
     def get_logs(self) -> List[Dict]:
         """Get all simulation logs."""
