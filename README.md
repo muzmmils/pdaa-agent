@@ -376,3 +376,130 @@ See `TEST_SUMMARY.md` for detailed test results including:
 ## License
 
 MIT License
+
+## ☁️ Cloud Run Deployment (Production API)
+
+You can deploy the PDAA Agent as a stateless HTTP API using **Google Cloud Run**.
+
+### Endpoints (FastAPI Service)
+| Method | Path        | Description                                 |
+|--------|-------------|---------------------------------------------|
+| GET    | `/health`   | Service health/status check                 |
+| GET    | `/`         | Service metadata + available endpoints      |
+| POST   | `/simulate` | Run multi-patient simulation (JSON summary) |
+| POST   | `/analyze`  | Single-patient one-day quick analysis       |
+
+### 1. Add Environment Variables
+Cloud Run supports env vars via `--set-env-vars`.
+
+Required:
+```
+GEMINI_API_KEY=<your_key>
+USE_NLP=false            # or true to enable AI messaging
+PATIENTS_FILE=data/patients.json
+```
+
+### 2. Build & Deploy (Linux/macOS)
+```bash
+./deploy_cloud_run.sh <GCP_PROJECT_ID> us-central1
+```
+
+### 2b. Build & Deploy (Windows PowerShell)
+```powershell
+./deploy_cloud_run.ps1 -ProjectId <GCP_PROJECT_ID> -Region us-central1
+```
+
+### 3. Manual gcloud Commands (Alternative)
+```bash
+gcloud config set project <GCP_PROJECT_ID>
+gcloud builds submit --tag gcr.io/<GCP_PROJECT_ID>/pdaa-agent:latest
+gcloud run deploy pdaa-agent \
+   --image gcr.io/<GCP_PROJECT_ID>/pdaa-agent:latest \
+   --platform managed \
+   --region us-central1 \
+   --allow-unauthenticated \
+   --set-env-vars GEMINI_API_KEY=$GEMINI_API_KEY,USE_NLP=false,PATIENTS_FILE=data/patients.json
+```
+
+### 4. Example Usage After Deploy
+Assuming Cloud Run returns URL: `https://pdaa-agent-xyz-uc.a.run.app`
+```bash
+# Health check
+curl https://pdaa-agent-xyz-uc.a.run.app/health
+
+# 3‑day simulation (all patients)
+curl -X POST https://pdaa-agent-xyz-uc.a.run.app/simulate \
+       -H 'Content-Type: application/json' \
+       -d '{"days":3}'
+
+# Enable NLP mode per request
+curl -X POST https://pdaa-agent-xyz-uc.a.run.app/simulate \
+       -H 'Content-Type: application/json' \
+       -d '{"days":2, "use_nlp":true}'
+
+# Single patient one-day analysis
+curl -X POST https://pdaa-agent-xyz-uc.a.run.app/analyze \
+       -H 'Content-Type: application/json' \
+       -d '{"patient_id":"P001", "day":1}'
+```
+
+### 5. Local Container Test
+```bash
+docker build -t pdaa-agent:local .
+docker run -p 8080:8080 -e GEMINI_API_KEY=$GEMINI_API_KEY pdaa-agent:local
+curl http://localhost:8080/health
+curl -X POST http://localhost:8080/simulate -H 'Content-Type: application/json' -d '{"days":1}'
+```
+
+### 6. Container Structure
+`Dockerfile` includes:
+- Python 3.13 slim base
+- Installs dependencies from `requirements.txt`
+- Copies full project
+- Runs `uvicorn app:app --port 8080`
+
+### 7. Security & Scaling Notes
+- Set `GEMINI_API_KEY` as a **secret** in production
+- Add `--cpu-throttling` and concurrency flags as needed
+- Use Cloud Logging for structured logs
+- Add Cloud Build trigger for CI/CD automation
+
+### 8. Minimal API Contract
+`POST /simulate` request body:
+```json
+{ "days": 7, "use_nlp": true }
+```
+Response (truncated):
+```json
+{
+   "days": 7,
+   "use_nlp": true,
+   "summary": {
+      "total_patients": 5,
+      "total_escalations": 3,
+      "overall_average_score": 72.4
+   },
+   "patients": {
+      "P001": { "patient_name": "John Doe", "average_score": 68.2, "final_risk": "MEDIUM" }
+   }
+}
+```
+
+### 9. Evidence of Deployment
+Include in submission:
+1. Screenshot of Cloud Run service page (SHOWING URL)
+2. Output of: `curl <url>/health`
+3. Output of 1-day simulation JSON
+4. (Optional) Log excerpt showing escalation
+
+### 10. Troubleshooting
+| Issue | Fix |
+|-------|-----|
+| 502 errors | Ensure `PORT=8080` exposed and uvicorn bound to 0.0.0.0 |
+| Auth required | Remove `--allow-unauthenticated` or add IAM role as needed |
+| Missing Gemini output | Verify `GEMINI_API_KEY` set and quota available |
+| Slow startup | Use larger Cloud Run memory (e.g., 512Mi) |
+
+**Cloud Run deployment artifacts added:** `Dockerfile`, `app.py`, `deploy_cloud_run.sh`, `deploy_cloud_run.ps1`.
+
+---
