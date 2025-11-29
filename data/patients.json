@@ -1,0 +1,9 @@
+[
+  {
+    "id": "P001",
+    "name": "Sample Patient",
+    "age": 45,
+    "diagnosis": "Sample diagnosis",
+    "notes": "This is a placeholder patient record"
+  }
+]

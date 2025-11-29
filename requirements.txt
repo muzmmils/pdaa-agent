@@ -1,0 +1,13 @@
+# Core dependencies
+openai>=1.0.0
+anthropic>=0.7.0
+python-dotenv>=1.0.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Jupyter support
+jupyter>=1.0.0
+notebook>=7.0.0
+ipykernel>=6.0.0
