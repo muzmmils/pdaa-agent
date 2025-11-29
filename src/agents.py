@@ -20,11 +20,13 @@ class BaseAgent:
         self.memory_manager = memory_manager
         self.logs: List[Dict] = []
         
-        # Initialize Gemini (optional - for advanced reasoning)
+        # Initialize Gemini (required for Analyzer in Gemini-only mode)
         api_key = os.getenv("GEMINI_API_KEY")
         if api_key:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel('gemini-pro')
+            # Use Gemini 2.5 Flash (fast, cost-effective, latest)
+            model_name = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+            self.model = genai.GenerativeModel(model_name)
         else:
             self.model = None
     
@@ -177,59 +179,33 @@ class AnalyzerAgent(BaseAgent):
     
     def _chain_of_thought_analysis(self, patient: Dict, score: Dict, 
                                     risk: Dict, monitoring: Dict) -> str:
-        """Generate Chain-of-Thought analysis.
+        """Generate Chain-of-Thought analysis using Gemini only."""
 
-        If Gemini model is available, generate an enriched summary; otherwise fallback
-        to deterministic template below.
-        """
-        
-        # Try Gemini for richer reasoning
-        if self.model:
-            try:
-                prompt = (
-                    "You are a clinical adherence analyst. Summarize today's adherence and risk "
-                    "for the patient in 6-8 bullet points with clear, actionable insights. Include: "
-                    "(1) adherence score with interpretation, (2) missed tasks and likely impact, "
-                    "(3) risk class and drivers, (4) near-term recommendations, (5) next check timing.\n\n"
-                    f"Patient: {patient['name']} (ID: {patient['id']})\n"
-                    f"Day: {monitoring['day']}\n"
-                    f"Score: {score['total_score']} (grade {score['grade']})\n"
-                    f"Missed tasks: {', '.join(monitoring['missed_tasks']) or 'None'}\n"
-                    f"Risk class: {risk['risk_class']} (factors: {risk['factors']})\n"
-                )
-                resp = self.model.generate_content(prompt)
-                if hasattr(resp, 'text') and resp.text:
-                    return resp.text.strip()
-            except Exception as e:
-                # Fallback silently to template if Gemini call fails
-                pass
-        
-        analysis = f"""
-=== Chain-of-Thought Analysis ===
-Patient: {patient['name']} (ID: {patient['id']})
-Day: {monitoring['day']}
+        if not self.model:
+            raise RuntimeError(
+                "Gemini model not initialized. Set GEMINI_API_KEY in .env to enable Gemini-driven analysis."
+            )
 
-Step 1: Assess Current Adherence
-- Total Score: {score['total_score']}/100 (Grade: {score['grade']})
-- Medication: {'✓' if score['breakdown']['medication_adherence'] > 0 else '✗'}
-- Therapy: {'✓' if score['breakdown']['therapy_adherence'] > 0 else '✗'}
-- Diet: {'✓' if score['breakdown']['diet_adherence'] > 0 else '✗'}
-
-Step 2: Evaluate Risk Factors
-- Base Risk: {risk['factors']['base_risk']}
-- Adherence Trend: {risk['factors']['adherence_trend']}
-- Age Risk: {risk['factors']['age_risk']}
-- Final Risk Class: {risk['risk_class']}
-
-Step 3: Identify Concerns
-- Missed Tasks: {', '.join(monitoring['missed_tasks']) or 'None'}
-- Concerning Pattern: {'Yes' if score['total_score'] < 70 else 'No'}
-
-Step 4: Conclusion
-{risk['recommendation']}
-================================
-        """
-        return analysis.strip()
+        prompt = (
+            "You are a clinical adherence analyst. Summarize today's adherence and risk "
+            "for the patient in 6-8 bullet points with clear, actionable insights. Include: "
+            "(1) adherence score with interpretation, (2) missed tasks and likely impact, "
+            "(3) risk class and drivers, (4) near-term recommendations, (5) next check timing.\n\n"
+            f"Patient: {patient['name']} (ID: {patient['id']})\n"
+            f"Day: {monitoring['day']}\n"
+            f"Score: {score['total_score']} (grade {score['grade']})\n"
+            f"Missed tasks: {', '.join(monitoring['missed_tasks']) or 'None'}\n"
+            f"Risk class: {risk['risk_class']} (factors: {risk['factors']})\n"
+        )
+        try:
+            resp = self.model.generate_content(prompt)
+        except Exception as e:
+            raise RuntimeError(
+                "Gemini generate_content failed. Verify GEMINI_API_KEY, network access, and model availability for your client version."
+            ) from e
+        if hasattr(resp, 'text') and resp.text:
+            return resp.text.strip()
+        raise RuntimeError("Gemini did not return text content for analysis.")
 
 
 class EscalatorAgent(BaseAgent):
