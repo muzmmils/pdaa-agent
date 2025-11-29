@@ -46,10 +46,11 @@ class BaseAgent:
 class MonitorAgent(BaseAgent):
     """Monitors patient status and checks for missed tasks."""
     
-    def __init__(self, memory_manager: MemoryManager):
+    def __init__(self, memory_manager: MemoryManager, use_nlp: bool = False):
         super().__init__("MonitorAgent", memory_manager)
         self.intake_tool = IntakeTool()
-        self.reminder_tool = ReminderTool()
+        self.reminder_tool = ReminderTool(use_nlp=use_nlp)
+        self.use_nlp = use_nlp
     
     def process_patient(self, patient_data: Dict, day: int, 
                         simulated_adherence: Dict) -> Dict[str, Any]:
@@ -77,16 +78,24 @@ class MonitorAgent(BaseAgent):
         
         # Generate appropriate reminders
         reminders = []
+        patient_context = {
+            "name": patient_data["name"],
+            "age": patient_data.get("age", 50),
+            "condition": patient_data.get("condition", "recovery"),
+            "days_since_discharge": day,
+            "recent_concerns": missed_tasks
+        }
+        
         if "medication" in missed_tasks:
             for med in plan["medications"]:
                 reminders.append(self.reminder_tool.generate_medication_reminder(
-                    plan["patient_name"], med
+                    plan["patient_name"], med, patient_context if self.use_nlp else None
                 ))
         
         if "therapy" in missed_tasks:
             for therapy in plan["therapy"]:
                 reminders.append(self.reminder_tool.generate_therapy_reminder(
-                    plan["patient_name"], therapy
+                    plan["patient_name"], therapy, patient_context if self.use_nlp else None
                 ))
         
         # Update session memory
@@ -211,12 +220,22 @@ class AnalyzerAgent(BaseAgent):
 class EscalatorAgent(BaseAgent):
     """Makes escalation decisions and takes action."""
     
-    def __init__(self, memory_manager: MemoryManager, escalation_logger=None):
+    def __init__(self, memory_manager: MemoryManager, escalation_logger=None, use_nlp: bool = False):
         super().__init__("EscalatorAgent", memory_manager)
         self.alert_tool = AlertTool(escalation_logger)
         self.recommendation_engine = RecommendationEngine()
-        self.reminder_tool = ReminderTool()
+        self.reminder_tool = ReminderTool(use_nlp=use_nlp)
         self.escalation_logger = escalation_logger
+        self.use_nlp = use_nlp
+        
+        # Initialize NLP engine for escalation messages if available
+        self.nlp_engine = None
+        if use_nlp:
+            try:
+                from .nlp_engine import GeminiNLPEngine
+                self.nlp_engine = GeminiNLPEngine()
+            except Exception as e:
+                print(f"[EscalatorAgent] NLP engine unavailable: {e}")
     
     def decide_and_act(self, patient_data: Dict, analysis_result: Dict,
                        monitoring_result: Dict) -> Dict[str, Any]:
@@ -281,7 +300,19 @@ class EscalatorAgent(BaseAgent):
                 )
         
         elif "SEND_PERSONALIZED_REMINDER" in recommendation["actions"]:
-            reminder = self.reminder_tool.generate_check_in(patient_data["name"])
+            patient_context = {
+                "name": patient_data["name"],
+                "age": patient_data.get("age", 50),
+                "condition": patient_data.get("condition", "recovery"),
+                "days_since_discharge": day,
+                "recent_concerns": monitoring_result.get("missed_tasks", [])
+            }
+            reminder = self.reminder_tool.generate_check_in(
+                patient_data["name"],
+                adherence_score=adherence_score,
+                days_since_discharge=day,
+                patient_context=patient_context if self.use_nlp else None
+            )
             actions_taken.append({"action": "REMINDER", "message": reminder})
             print(f"Sending reminder to {patient_data['name']}: {reminder}")
             
@@ -300,7 +331,18 @@ class EscalatorAgent(BaseAgent):
                 )
         
         elif "SEND_ENCOURAGEMENT" in recommendation["actions"]:
-            encouragement = self.reminder_tool. generate_encouragement(patient_data["name"])
+            patient_context = {
+                "name": patient_data["name"],
+                "age": patient_data.get("age", 50),
+                "condition": patient_data.get("condition", "recovery"),
+                "days_since_discharge": day
+            }
+            achievement = f"maintaining {adherence_score:.0f}% adherence to your care plan"
+            encouragement = self.reminder_tool.generate_encouragement(
+                patient_data["name"],
+                achievement=achievement,
+                patient_context=patient_context if self.use_nlp else None
+            )
             actions_taken.append({"action": "ENCOURAGEMENT", "message": encouragement})
             print(f"Sending encouragement to {patient_data['name']}: {encouragement}")
             
@@ -319,7 +361,18 @@ class EscalatorAgent(BaseAgent):
                 )
         
         else:
-            reminder = self.reminder_tool.generate_check_in(patient_data["name"])
+            patient_context = {
+                "name": patient_data["name"],
+                "age": patient_data.get("age", 50),
+                "condition": patient_data.get("condition", "recovery"),
+                "days_since_discharge": day
+            }
+            reminder = self.reminder_tool.generate_check_in(
+                patient_data["name"],
+                adherence_score=adherence_score,
+                days_since_discharge=day,
+                patient_context=patient_context if self.use_nlp else None
+            )
             actions_taken.append({"action": "GENTLE_REMINDER", "message": reminder})
             
             # Log action

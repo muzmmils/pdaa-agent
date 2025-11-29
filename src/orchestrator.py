@@ -11,16 +11,19 @@ from .agents import MonitorAgent, AnalyzerAgent, EscalatorAgent
 class PDAAOrchestrator:
     """Central orchestrator for the Post-Discharge Adherence Agent system."""
     
-    def __init__(self, patients_file: str = "data/patients.json"):
+    def __init__(self, patients_file: str = "data/patients.json", use_nlp: bool = False):
         self.memory_manager = MemoryManager()
+        self.use_nlp = use_nlp
         
         # Initialize escalation logger
         self.escalation_logger = EscalationLogger()
         
-        # Initialize agents with escalation logger
-        self.monitor_agent = MonitorAgent(self.memory_manager)
+        # Initialize agents with escalation logger and optional NLP
+        self.monitor_agent = MonitorAgent(self.memory_manager, use_nlp=use_nlp)
         self.analyzer_agent = AnalyzerAgent(self.memory_manager)
-        self.escalator_agent = EscalatorAgent(self.memory_manager, self.escalation_logger)
+        self.escalator_agent = EscalatorAgent(self.memory_manager, self.escalation_logger, use_nlp=use_nlp)
+        
+        print(f"[Orchestrator] Initialized with NLP mode: {'ENABLED' if use_nlp else 'DISABLED'}")
         
         # Load patients
         with open(patients_file, 'r') as f:

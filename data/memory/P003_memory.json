@@ -784,6 +784,104 @@
         "risk": "HIGH"
       },
       "timestamp": "2025-11-29T16:07:07.514270"
+    },
+    {
+      "day": 1,
+      "score": 30.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 30.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:35:48.150888"
+    },
+    {
+      "day": 2,
+      "score": 57.9,
+      "details": {
+        "breakdown": {
+          "task_completion": 42.9,
+          "medication_adherence": 0,
+          "therapy_adherence": 15,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:35:53.950773"
+    },
+    {
+      "day": 3,
+      "score": 22.5,
+      "details": {
+        "breakdown": {
+          "task_completion": 22.5,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:35:58.999476"
+    },
+    {
+      "day": 4,
+      "score": 8.6,
+      "details": {
+        "breakdown": {
+          "task_completion": 8.6,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:36:05.044006"
+    },
+    {
+      "day": 5,
+      "score": 22.5,
+      "details": {
+        "breakdown": {
+          "task_completion": 22.5,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:36:09.651440"
+    },
+    {
+      "day": 6,
+      "score": 0.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 0.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:36:16.409289"
+    },
+    {
+      "day": 7,
+      "score": 30.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 30.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:36:22.141278"
     }
   ],
   "alerts_sent": [
@@ -916,6 +1014,41 @@
       "type": "ESCALATION",
       "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 57.9, Risk: HIGH",
       "timestamp": "2025-11-29T16:06:59.894181"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 30.0, Risk: HIGH",
+      "timestamp": "2025-11-29T16:35:48.168938"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 57.9, Risk: HIGH",
+      "timestamp": "2025-11-29T16:35:53.981430"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 22.5, Risk: HIGH",
+      "timestamp": "2025-11-29T16:35:59.017268"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 8.6, Risk: HIGH",
+      "timestamp": "2025-11-29T16:36:05.072346"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 22.5, Risk: HIGH",
+      "timestamp": "2025-11-29T16:36:09.671591"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 0.0, Risk: HIGH",
+      "timestamp": "2025-11-29T16:36:16.428071"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient Robert Johnson requires immediate attention.  Adherence score: 30.0, Risk: HIGH",
+      "timestamp": "2025-11-29T16:36:22.158767"
     }
   ],
   "interactions": [],

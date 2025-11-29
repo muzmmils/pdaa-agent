@@ -1646,5 +1646,319 @@
       "status": "SENT",
       "delivery_confirmed": false
     }
+  },
+  {
+    "log_id": "ESC-00036",
+    "timestamp": "2025-11-29T16:49:02.000865",
+    "patient": {
+      "id": "P001",
+      "name": "John Doe"
+    },
+    "day": 1,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (20.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 20.0,
+        "breakdown": {
+          "task_completion": 20.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "grade": "F"
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH",
+        "risk_score": 5,
+        "factors": {
+          "base_risk": "high",
+          "adherence_trend": "declining",
+          "age_risk": "normal"
+        },
+        "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+      },
+      "missed_tasks": [
+        "medication",
+        "therapy",
+        "diet"
+      ],
+      "completion_rate": 3
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 20.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P001",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient John Doe requires immediate attention.  Adherence score: 20.0, Risk: HIGH",
+          "details": {
+            "adherence_score": 20.0,
+            "risk_class": "HIGH",
+            "day": 1
+          },
+          "timestamp": "2025-11-29T16:49:01.985217",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00037",
+    "timestamp": "2025-11-29T16:49:31.910021",
+    "patient": {
+      "id": "P001",
+      "name": "John Doe"
+    },
+    "day": 1,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (33.3%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 33.3,
+        "breakdown": {
+          "task_completion": 33.3,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "grade": "F"
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH",
+        "risk_score": 5,
+        "factors": {
+          "base_risk": "high",
+          "adherence_trend": "declining",
+          "age_risk": "normal"
+        },
+        "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+      },
+      "missed_tasks": [
+        "medication",
+        "therapy",
+        "diet"
+      ],
+      "completion_rate": 5
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 33.3/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P001",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient John Doe requires immediate attention.  Adherence score: 33.3, Risk: HIGH",
+          "details": {
+            "adherence_score": 33.3,
+            "risk_class": "HIGH",
+            "day": 1
+          },
+          "timestamp": "2025-11-29T16:49:31.895303",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ACT-00038",
+    "timestamp": "2025-11-29T16:49:37.944434",
+    "patient": {
+      "id": "P001",
+      "name": "John Doe"
+    },
+    "day": 2,
+    "action": {
+      "type": "CHECK_IN",
+      "details": {
+        "message": "Hi John Doe! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Routine check-in"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 78.3,
+      "risk_class": "HIGH"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ESC-00039",
+    "timestamp": "2025-11-29T16:49:43.895682",
+    "patient": {
+      "id": "P001",
+      "name": "John Doe"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (43.3%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 43.3,
+        "breakdown": {
+          "task_completion": 33.3,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 10
+        },
+        "grade": "F"
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH",
+        "risk_score": 5,
+        "factors": {
+          "base_risk": "high",
+          "adherence_trend": "declining",
+          "age_risk": "normal"
+        },
+        "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+      },
+      "missed_tasks": [
+        "medication",
+        "therapy"
+      ],
+      "completion_rate": 5
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 43.3/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0002",
+          "patient_id": "P001",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient John Doe requires immediate attention.  Adherence score: 43.3, Risk: HIGH",
+          "details": {
+            "adherence_score": 43.3,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T16:49:43.869843",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ACT-00040",
+    "timestamp": "2025-11-29T17:06:11.469088",
+    "patient": {
+      "id": "P001",
+      "name": "John Doe"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi John Doe! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 30.0,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00041",
+    "timestamp": "2025-11-29T17:06:24.563552",
+    "patient": {
+      "id": "P001",
+      "name": "John Doe"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi John, it's [Your Name] checking in on you after your cardiac surgery. I noticed your adherence score was a little lower than expected at 30.0/100, and I understand you have some concerns about your medication and therapy. How are you feeling overall today, and is there anything specific I can help clarify or support you with regarding your medication or therapy schedule?",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 30.0,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
   }
 ]

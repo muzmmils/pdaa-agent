@@ -46,9 +46,22 @@ class IntakeTool:
 
 
 class ReminderTool:
-    """Generates personalized reminder messages."""
+    """Generates personalized reminder messages with optional NLP enhancement."""
     
-    def __init__(self):
+    def __init__(self, use_nlp: bool = False):
+        self.use_nlp = use_nlp
+        self.nlp_engine = None
+        
+        # Initialize NLP engine if requested
+        if use_nlp:
+            try:
+                from .nlp_engine import GeminiNLPEngine
+                self.nlp_engine = GeminiNLPEngine()
+            except Exception as e:
+                print(f"[ReminderTool] NLP engine unavailable: {e}")
+                self.use_nlp = False
+        
+        # Fallback templates
         self.templates = {
             "medication": "[MED] Reminder: Time to take your {med_name}.  {frequency}.",
             "therapy": "[THERAPY] Reminder: Don't forget your {activity} today! ",
@@ -57,27 +70,81 @@ class ReminderTool:
             "encouragement": "Great job staying on track, {name}! Keep up the good work!"
         }
     
-    def generate_medication_reminder(self, patient_name: str, medication: Dict) -> str:
-        """Generate medication reminder."""
+    def generate_medication_reminder(self, patient_name: str, medication: Dict, 
+                                     patient_context: Dict = None) -> str:
+        """Generate medication reminder with optional NLP personalization."""
+        if self.use_nlp and self.nlp_engine and patient_context:
+            try:
+                return self.nlp_engine.generate_personalized_reminder(
+                    patient_name=patient_name,
+                    patient_age=patient_context.get("age", 50),
+                    missed_task=f"medication: {medication['name']}",
+                    task_details=medication,
+                    patient_context=patient_context
+                )
+            except Exception:
+                pass
+        
+        # Fallback to template
         return self.templates["medication"].format(
             med_name=medication["name"],
             frequency=medication["frequency"]
         )
     
-    def generate_therapy_reminder(self, patient_name: str, therapy: Dict) -> str:
-        """Generate therapy reminder."""
+    def generate_therapy_reminder(self, patient_name: str, therapy: Dict,
+                                  patient_context: Dict = None) -> str:
+        """Generate therapy reminder with optional NLP personalization."""
+        if self.use_nlp and self.nlp_engine and patient_context:
+            try:
+                return self.nlp_engine.generate_personalized_reminder(
+                    patient_name=patient_name,
+                    patient_age=patient_context.get("age", 50),
+                    missed_task=f"therapy: {therapy['activity']}",
+                    task_details=therapy,
+                    patient_context=patient_context
+                )
+            except Exception:
+                pass
+        
+        # Fallback to template
         return self.templates["therapy"].format(activity=therapy["activity"])
     
     def generate_follow_up_reminder(self, patient_name: str, date: str) -> str:
         """Generate follow-up appointment reminder."""
         return self.templates["follow_up"].format(date=date)
     
-    def generate_check_in(self, patient_name: str) -> str:
-        """Generate general check-in message."""
+    def generate_check_in(self, patient_name: str, adherence_score: float = 75,
+                         days_since_discharge: int = 1, patient_context: Dict = None) -> str:
+        """Generate check-in message with optional NLP personalization."""
+        if self.use_nlp and self.nlp_engine and patient_context:
+            try:
+                return self.nlp_engine.generate_check_in_message(
+                    patient_name=patient_name,
+                    adherence_score=adherence_score,
+                    days_since_discharge=days_since_discharge,
+                    recent_concerns=patient_context.get("recent_concerns", []),
+                    patient_context=patient_context
+                )
+            except Exception:
+                pass
+        
+        # Fallback to template
         return self.templates["general"].format(name=patient_name)
     
-    def generate_encouragement(self, patient_name: str) -> str:
-        """Generate encouragement message."""
+    def generate_encouragement(self, patient_name: str, achievement: str = None,
+                              patient_context: Dict = None) -> str:
+        """Generate encouragement message with optional NLP personalization."""
+        if self.use_nlp and self.nlp_engine and patient_context and achievement:
+            try:
+                return self.nlp_engine.generate_encouragement_message(
+                    patient_name=patient_name,
+                    achievement=achievement,
+                    patient_context=patient_context
+                )
+            except Exception:
+                pass
+        
+        # Fallback to template
         return self.templates["encouragement"].format(name=patient_name)
 
 
