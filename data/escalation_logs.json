@@ -1960,5 +1960,1919 @@
       "status": "SENT",
       "delivery_confirmed": false
     }
+  },
+  {
+    "log_id": "ACT-00042",
+    "timestamp": "2025-11-29T19:02:38.889362",
+    "patient": {
+      "id": "P005",
+      "name": "Charlie Brown"
+    },
+    "day": 3,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Charlie Brown! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 50,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00043",
+    "timestamp": "2025-11-29T19:02:38.911519",
+    "patient": {
+      "id": "P006",
+      "name": "Test Patient"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Test Patient! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 60,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ESC-00044",
+    "timestamp": "2025-11-29T19:02:38.936525",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 2
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:02:38.935470",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00045",
+    "timestamp": "2025-11-29T19:02:38.976768",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:02:38.975987",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00046",
+    "timestamp": "2025-11-29T19:02:38.997674",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 4,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0002",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 4
+          },
+          "timestamp": "2025-11-29T19:02:38.983746",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ACT-00047",
+    "timestamp": "2025-11-29T19:03:42.108265",
+    "patient": {
+      "id": "P005",
+      "name": "Charlie Brown"
+    },
+    "day": 3,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Charlie Brown! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 50,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00048",
+    "timestamp": "2025-11-29T19:03:42.129097",
+    "patient": {
+      "id": "P006",
+      "name": "Test Patient"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Test Patient! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 60,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ESC-00049",
+    "timestamp": "2025-11-29T19:03:42.153523",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 2
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:03:42.152616",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00050",
+    "timestamp": "2025-11-29T19:03:42.190288",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:03:42.189467",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00051",
+    "timestamp": "2025-11-29T19:03:42.209297",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 4,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0002",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 4
+          },
+          "timestamp": "2025-11-29T19:03:42.198008",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ACT-00052",
+    "timestamp": "2025-11-29T19:08:39.773287",
+    "patient": {
+      "id": "P005",
+      "name": "Charlie Brown"
+    },
+    "day": 3,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Charlie Brown! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 50,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00053",
+    "timestamp": "2025-11-29T19:08:39.883187",
+    "patient": {
+      "id": "P006",
+      "name": "Test Patient"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Test Patient! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 60,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ESC-00054",
+    "timestamp": "2025-11-29T19:08:39.945287",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 2
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:08:39.944125",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00055",
+    "timestamp": "2025-11-29T19:08:40.002379",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:08:39.999371",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00056",
+    "timestamp": "2025-11-29T19:08:40.027442",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 4,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0002",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 4
+          },
+          "timestamp": "2025-11-29T19:08:40.014671",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00057",
+    "timestamp": "2025-11-29T19:12:15.348065",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication",
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:12:15.347181",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ACT-00058",
+    "timestamp": "2025-11-29T19:12:15.382270",
+    "patient": {
+      "id": "P004",
+      "name": "Alice Cooper"
+    },
+    "day": 2,
+    "action": {
+      "type": "ENCOURAGEMENT",
+      "details": {
+        "message": "Great job staying on track, Alice Cooper! Keep up the good work!",
+        "reason": "Good adherence reinforcement"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 95,
+      "risk_class": "LOW"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00059",
+    "timestamp": "2025-11-29T19:12:15.438903",
+    "patient": {
+      "id": "P005",
+      "name": "Charlie Brown"
+    },
+    "day": 3,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Charlie Brown! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 50,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00060",
+    "timestamp": "2025-11-29T19:12:15.470681",
+    "patient": {
+      "id": "P006",
+      "name": "Test Patient"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Test Patient! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 60,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ESC-00061",
+    "timestamp": "2025-11-29T19:12:15.497907",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 2
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:12:15.497131",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00062",
+    "timestamp": "2025-11-29T19:12:15.523859",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:12:15.523000",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00063",
+    "timestamp": "2025-11-29T19:12:15.564864",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:12:15.564135",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00064",
+    "timestamp": "2025-11-29T19:12:15.585917",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 4,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0002",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 4
+          },
+          "timestamp": "2025-11-29T19:12:15.572835",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00065",
+    "timestamp": "2025-11-29T19:15:25.182945",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication",
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:15:25.182123",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ACT-00066",
+    "timestamp": "2025-11-29T19:15:25.207179",
+    "patient": {
+      "id": "P004",
+      "name": "Alice Cooper"
+    },
+    "day": 2,
+    "action": {
+      "type": "ENCOURAGEMENT",
+      "details": {
+        "message": "Great job staying on track, Alice Cooper! Keep up the good work!",
+        "reason": "Good adherence reinforcement"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 95,
+      "risk_class": "LOW"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00067",
+    "timestamp": "2025-11-29T19:15:25.250418",
+    "patient": {
+      "id": "P005",
+      "name": "Charlie Brown"
+    },
+    "day": 3,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Charlie Brown! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 50,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00068",
+    "timestamp": "2025-11-29T19:15:25.276573",
+    "patient": {
+      "id": "P006",
+      "name": "Test Patient"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Test Patient! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 60,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ESC-00069",
+    "timestamp": "2025-11-29T19:15:25.302182",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 2
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:15:25.301232",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00070",
+    "timestamp": "2025-11-29T19:15:25.330586",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:15:25.329804",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00071",
+    "timestamp": "2025-11-29T19:15:25.373944",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T19:15:25.373004",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00072",
+    "timestamp": "2025-11-29T19:15:25.393599",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 4,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0002",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 4
+          },
+          "timestamp": "2025-11-29T19:15:25.381757",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00073",
+    "timestamp": "2025-11-29T22:01:35.090029",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication",
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T22:01:35.089052",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ACT-00074",
+    "timestamp": "2025-11-29T22:01:35.117377",
+    "patient": {
+      "id": "P004",
+      "name": "Alice Cooper"
+    },
+    "day": 2,
+    "action": {
+      "type": "ENCOURAGEMENT",
+      "details": {
+        "message": "Great job staying on track, Alice Cooper! Keep up the good work!",
+        "reason": "Good adherence reinforcement"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 95,
+      "risk_class": "LOW"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00075",
+    "timestamp": "2025-11-29T22:01:35.162005",
+    "patient": {
+      "id": "P005",
+      "name": "Charlie Brown"
+    },
+    "day": 3,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Charlie Brown! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 50,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ACT-00076",
+    "timestamp": "2025-11-29T22:01:35.188750",
+    "patient": {
+      "id": "P006",
+      "name": "Test Patient"
+    },
+    "day": 1,
+    "action": {
+      "type": "REMINDER",
+      "details": {
+        "message": "Hi Test Patient! Just checking in on your recovery. How are you feeling today? ",
+        "reason": "Moderate adherence concern"
+      },
+      "automated": true
+    },
+    "context": {
+      "adherence_score": 60,
+      "risk_class": "MEDIUM"
+    },
+    "outcome": {
+      "status": "SENT",
+      "delivery_confirmed": false
+    }
+  },
+  {
+    "log_id": "ESC-00077",
+    "timestamp": "2025-11-29T22:01:35.219943",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 2
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T22:01:35.219308",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00078",
+    "timestamp": "2025-11-29T22:01:35.251665",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T22:01:35.250830",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00079",
+    "timestamp": "2025-11-29T22:01:35.287256",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 3,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "medication"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0001",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 3
+          },
+          "timestamp": "2025-11-29T22:01:35.286557",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
+  },
+  {
+    "log_id": "ESC-00080",
+    "timestamp": "2025-11-29T22:01:35.307766",
+    "patient": {
+      "id": "P003",
+      "name": "Bob Johnson"
+    },
+    "day": 4,
+    "escalation": {
+      "type": "CARE_TEAM_ESCALATION",
+      "severity": "HIGH",
+      "trigger_reason": "Low adherence (30.0%) with HIGH risk"
+    },
+    "clinical_context": {
+      "adherence_score": {
+        "total_score": 30
+      },
+      "risk_assessment": {
+        "risk_class": "HIGH"
+      },
+      "missed_tasks": [
+        "therapy"
+      ],
+      "completion_rate": 0
+    },
+    "decision": {
+      "priority": "URGENT",
+      "recommended_actions": [
+        "ESCALATE_TO_CARE_TEAM",
+        "SCHEDULE_PHONE_CALL"
+      ],
+      "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 30/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+      "next_check": "2 hours"
+    },
+    "actions_taken": [
+      {
+        "action": "ESCALATE",
+        "alert": {
+          "alert_id": "ALT-0002",
+          "patient_id": "P003",
+          "type": "CARE_TEAM_ESCALATION",
+          "severity": "HIGH",
+          "message": "Patient Bob Johnson requires immediate attention.  Adherence score: 30, Risk: HIGH",
+          "details": {
+            "adherence_score": 30,
+            "risk_class": "HIGH",
+            "day": 4
+          },
+          "timestamp": "2025-11-29T22:01:35.297435",
+          "status": "TRIGGERED"
+        }
+      }
+    ],
+    "outcome": {
+      "status": "PENDING",
+      "response_time": null,
+      "resolution_notes": null
+    },
+    "metadata": {
+      "system_version": "1.0",
+      "alert_channel": "SYSTEM_LOG",
+      "requires_followup": true
+    }
   }
 ]
