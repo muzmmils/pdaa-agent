@@ -588,6 +588,216 @@
         "risk": "HIGH"
       },
       "timestamp": "2025-11-29T15:20:15.064451"
+    },
+    {
+      "day": 1,
+      "score": 13.3,
+      "details": {
+        "breakdown": {
+          "task_completion": 13.3,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T15:50:51.971207"
+    },
+    {
+      "day": 2,
+      "score": 40.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 40.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T15:50:58.759528"
+    },
+    {
+      "day": 3,
+      "score": 40.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 40.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T15:51:05.828468"
+    },
+    {
+      "day": 4,
+      "score": 33.3,
+      "details": {
+        "breakdown": {
+          "task_completion": 33.3,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T15:51:11.624090"
+    },
+    {
+      "day": 5,
+      "score": 20.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 20.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T15:51:18.192459"
+    },
+    {
+      "day": 6,
+      "score": 100,
+      "details": {
+        "breakdown": {
+          "task_completion": 60.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 10
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T15:51:25.042213"
+    },
+    {
+      "day": 7,
+      "score": 13.3,
+      "details": {
+        "breakdown": {
+          "task_completion": 13.3,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "MEDIUM"
+      },
+      "timestamp": "2025-11-29T15:51:29.524779"
+    },
+    {
+      "day": 1,
+      "score": 61.7,
+      "details": {
+        "breakdown": {
+          "task_completion": 46.7,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:03:55.050638"
+    },
+    {
+      "day": 1,
+      "score": 48.3,
+      "details": {
+        "breakdown": {
+          "task_completion": 33.3,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "MEDIUM"
+      },
+      "timestamp": "2025-11-29T16:05:05.881868"
+    },
+    {
+      "day": 2,
+      "score": 20.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 20.0,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:05:11.394662"
+    },
+    {
+      "day": 3,
+      "score": 6.7,
+      "details": {
+        "breakdown": {
+          "task_completion": 6.7,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:05:17.836640"
+    },
+    {
+      "day": 4,
+      "score": 71.7,
+      "details": {
+        "breakdown": {
+          "task_completion": 46.7,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 10
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:05:23.929897"
+    },
+    {
+      "day": 5,
+      "score": 13.3,
+      "details": {
+        "breakdown": {
+          "task_completion": 13.3,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:05:29.841050"
+    },
+    {
+      "day": 6,
+      "score": 61.7,
+      "details": {
+        "breakdown": {
+          "task_completion": 46.7,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:05:36.912318"
+    },
+    {
+      "day": 7,
+      "score": 43.3,
+      "details": {
+        "breakdown": {
+          "task_completion": 33.3,
+          "medication_adherence": 0,
+          "therapy_adherence": 0,
+          "diet_adherence": 10
+        },
+        "risk": "HIGH"
+      },
+      "timestamp": "2025-11-29T16:05:42.514392"
     }
   ],
   "alerts_sent": [
@@ -600,6 +810,51 @@
       "type": "ESCALATION",
       "message": "Patient John Doe requires immediate attention.  Adherence score: 54.0, Risk: HIGH",
       "timestamp": "2025-11-29T15:02:00.104903"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 13.3, Risk: HIGH",
+      "timestamp": "2025-11-29T15:50:51.994624"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 40.0, Risk: HIGH",
+      "timestamp": "2025-11-29T15:50:58.782381"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 40.0, Risk: HIGH",
+      "timestamp": "2025-11-29T15:51:05.841827"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 33.3, Risk: HIGH",
+      "timestamp": "2025-11-29T15:51:11.637026"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 20.0, Risk: HIGH",
+      "timestamp": "2025-11-29T15:51:18.213430"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 20.0, Risk: HIGH",
+      "timestamp": "2025-11-29T16:05:11.413875"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 6.7, Risk: HIGH",
+      "timestamp": "2025-11-29T16:05:17.850022"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 13.3, Risk: HIGH",
+      "timestamp": "2025-11-29T16:05:29.861549"
+    },
+    {
+      "type": "ESCALATION",
+      "message": "Patient John Doe requires immediate attention.  Adherence score: 43.3, Risk: HIGH",
+      "timestamp": "2025-11-29T16:05:42.533553"
     }
   ],
   "interactions": [],

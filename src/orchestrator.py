@@ -4,7 +4,7 @@ from typing import Dict, List, Any
 from pathlib import Path
 
 from .memory import MemoryManager
-from . tools import AdherenceScoreTool
+from . tools import AdherenceScoreTool, DailyPlannerTool, PatientEngagementSimulator
 from .agents import MonitorAgent, AnalyzerAgent, EscalatorAgent
 
 
@@ -23,8 +23,10 @@ class PDAAOrchestrator:
         with open(patients_file, 'r') as f:
             self.patients = json.load(f)
         
-        # Simulation tool
-        self.adherence_simulator = AdherenceScoreTool()
+        # Enhanced simulation tools
+        self.adherence_scorer = AdherenceScoreTool()
+        self.daily_planner = DailyPlannerTool()
+        self.engagement_simulator = PatientEngagementSimulator()
         
         # Logs
         self.simulation_logs: List[Dict] = []
@@ -33,8 +35,8 @@ class PDAAOrchestrator:
         """Run full simulation for all patients over specified days."""
         
         print("=" * 60)
-        print("🏥 PDAA - Post-Discharge Adherence Agent System")
-        print(f"📅 Starting {days}-day simulation for {len(self.patients)} patients")
+        print("PDAA - Post-Discharge Adherence Agent System")
+        print(f"Starting {days}-day simulation for {len(self.patients)} patients")
         print("=" * 60)
         
         results = {
@@ -48,7 +50,7 @@ class PDAAOrchestrator:
         for patient in self.patients:
             patient_id = patient["id"]
             print(f"\n{'='*50}")
-            print(f"👤 Patient: {patient['name']} (ID: {patient_id})")
+            print(f"Patient: {patient['name']} (ID: {patient_id})")
             print(f"   Condition: {patient['condition']}")
             print(f"   Initial Risk: {patient['risk']. upper()}")
             print(f"{'='*50}")
@@ -69,31 +71,50 @@ class PDAAOrchestrator:
         """Run simulation for a single patient."""
         
         daily_results = []
+        engagement_history = []
         
         for day in range(1, days + 1):
             print(f"\n--- Day {day} ---")
             
-            # Simulate adherence (in real system, this would come from patient input)
-            simulated_adherence = self.adherence_simulator.simulate_daily_adherence(
-                patient["risk"]
-            )
+            # Step 0: Generate daily plan
+            daily_plan = self.daily_planner.create_daily_plan(patient, day)
+            print(f"Daily plan created: {daily_plan['total_tasks']} tasks scheduled")
             
-            # Step 1: Monitor Agent
+            # Step 1: Simulate patient engagement with the plan
+            engagement_result = self.engagement_simulator.simulate_task_completion(
+                patient, daily_plan, day
+            )
+            engagement_history.append(engagement_result)
+            
+            # Convert engagement to adherence format for monitoring
+            simulated_adherence = {
+                "medication_taken": engagement_result["medication_taken"],
+                "therapy_done": engagement_result["therapy_done"],
+                "diet_followed": engagement_result["diet_followed"],
+                "tasks_completed": engagement_result["tasks_completed"],
+                "tasks_total": engagement_result["tasks_total"]
+            }
+            
+            print(f"Completed: {engagement_result['tasks_completed']}/{engagement_result['tasks_total']} tasks ({engagement_result['completion_rate']}%)")
+            
+            # Step 2: Monitor Agent
             monitoring_result = self.monitor_agent.process_patient(
                 patient, day, simulated_adherence
             )
             
-            # Step 2: Analyzer Agent
+            # Step 3: Analyzer Agent
             analysis_result = self.analyzer_agent.analyze(patient, monitoring_result)
             print(analysis_result["chain_of_thought"])
             
-            # Step 3: Escalator Agent
+            # Step 4: Escalator Agent
             escalation_result = self.escalator_agent.decide_and_act(
                 patient, analysis_result, monitoring_result
             )
             
             daily_results.append({
                 "day": day,
+                "daily_plan": daily_plan,
+                "engagement": engagement_result,
                 "monitoring": monitoring_result,
                 "analysis": analysis_result,
                 "escalation": escalation_result
@@ -104,6 +125,7 @@ class PDAAOrchestrator:
                 "patient_id": patient["id"],
                 "day": day,
                 "timestamp": datetime.now().isoformat(),
+                "completion_rate": engagement_result["completion_rate"],
                 "score": analysis_result["adherence_score"]["total_score"],
                 "risk": analysis_result["risk_assessment"]["risk_class"],
                 "escalated": escalation_result["escalated"]
@@ -113,6 +135,11 @@ class PDAAOrchestrator:
         scores = [r["analysis"]["adherence_score"]["total_score"] for r in daily_results]
         escalations = sum(1 for r in daily_results if r["escalation"]["escalated"])
         
+        # Get engagement insights
+        engagement_insights = self.engagement_simulator.get_engagement_insights(
+            patient, engagement_history
+        )
+        
         return {
             "patient_id": patient["id"],
             "patient_name": patient["name"],
@@ -121,7 +148,8 @@ class PDAAOrchestrator:
             "min_score": min(scores) if scores else 0,
             "max_score": max(scores) if scores else 0,
             "total_escalations": escalations,
-            "final_risk": daily_results[-1]["analysis"]["risk_assessment"]["risk_class"]
+            "final_risk": daily_results[-1]["analysis"]["risk_assessment"]["risk_class"],
+            "engagement_insights": engagement_insights
         }
     
     def _generate_summary(self, patient_results: Dict) -> Dict[str, Any]:
@@ -135,10 +163,19 @@ class PDAAOrchestrator:
             if r["final_risk"] == "HIGH"
         ]
         
+        # Calculate average completion rate across all patients
+        completion_rates = []
+        for result in patient_results.values():
+            if "engagement_insights" in result and "average_completion" in result["engagement_insights"]:
+                completion_rates.append(result["engagement_insights"]["average_completion"])
+        
+        avg_completion = sum(completion_rates) / len(completion_rates) if completion_rates else 0
+        
         return {
             "total_patients": len(patient_results),
             "total_escalations": total_escalations,
             "overall_average_score": sum(avg_scores) / len(avg_scores) if avg_scores else 0,
+            "average_completion_rate": avg_completion,
             "high_risk_patients": high_risk_patients,
             "patients_needing_attention": len(high_risk_patients)
         }
@@ -147,11 +184,12 @@ class PDAAOrchestrator:
         """Print final summary."""
         
         print("\n" + "=" * 60)
-        print("📊 SIMULATION SUMMARY")
+        print("SIMULATION SUMMARY")
         print("=" * 60)
         print(f"Total Patients Monitored: {summary['total_patients']}")
         print(f"Total Escalations Triggered: {summary['total_escalations']}")
         print(f"Overall Average Adherence: {summary['overall_average_score']:.1f}/100")
+        print(f"Average Task Completion: {summary.get('average_completion_rate', 0):.1f}%")
         print(f"High-Risk Patients: {summary['patients_needing_attention']}")
         
         if summary['high_risk_patients']:
@@ -179,7 +217,7 @@ class PDAAOrchestrator:
         with open(output_path, 'w') as f:
             json.dump(cleaned_results, f, indent=2, default=str)
         
-        print(f"\n💾 Results exported to: {output_path}")
+        print(f"\nResults exported to: {output_path}")
     
     def get_logs(self) -> List[Dict]:
         """Get all simulation logs."""

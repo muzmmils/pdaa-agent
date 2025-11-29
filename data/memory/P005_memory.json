@@ -588,6 +588,202 @@
         "risk": "LOW"
       },
       "timestamp": "2025-11-29T15:23:10.098392"
+    },
+    {
+      "day": 1,
+      "score": 100,
+      "details": {
+        "breakdown": {
+          "task_completion": 60.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T15:53:39.440493"
+    },
+    {
+      "day": 2,
+      "score": 100,
+      "details": {
+        "breakdown": {
+          "task_completion": 60.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T15:53:44.930452"
+    },
+    {
+      "day": 3,
+      "score": 75.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 50.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T15:53:50.316437"
+    },
+    {
+      "day": 4,
+      "score": 75.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 50.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T15:53:55.315562"
+    },
+    {
+      "day": 5,
+      "score": 55.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 40.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T15:54:03.920616"
+    },
+    {
+      "day": 6,
+      "score": 65.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 40.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T15:54:09.731219"
+    },
+    {
+      "day": 7,
+      "score": 100,
+      "details": {
+        "breakdown": {
+          "task_completion": 60.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T15:54:17.380988"
+    },
+    {
+      "day": 1,
+      "score": 55.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 40.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T16:08:04.982536"
+    },
+    {
+      "day": 2,
+      "score": 100,
+      "details": {
+        "breakdown": {
+          "task_completion": 60.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T16:08:10.971855"
+    },
+    {
+      "day": 3,
+      "score": 55.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 40.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T16:08:16.421026"
+    },
+    {
+      "day": 4,
+      "score": 55.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 40.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 0,
+          "diet_adherence": 0
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T16:08:23.550662"
+    },
+    {
+      "day": 5,
+      "score": 80.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 50.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 0
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T16:08:30.329980"
+    },
+    {
+      "day": 6,
+      "score": 100,
+      "details": {
+        "breakdown": {
+          "task_completion": 60.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 10
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T16:08:36.576166"
+    },
+    {
+      "day": 7,
+      "score": 80.0,
+      "details": {
+        "breakdown": {
+          "task_completion": 50.0,
+          "medication_adherence": 15,
+          "therapy_adherence": 15,
+          "diet_adherence": 0
+        },
+        "risk": "LOW"
+      },
+      "timestamp": "2025-11-29T16:08:42.754452"
     }
   ],
   "alerts_sent": [],

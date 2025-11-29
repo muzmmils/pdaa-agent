@@ -263,12 +263,12 @@ class EscalatorAgent(BaseAgent):
         elif "SEND_PERSONALIZED_REMINDER" in recommendation["actions"]:
             reminder = self.reminder_tool.generate_check_in(patient_data["name"])
             actions_taken.append({"action": "REMINDER", "message": reminder})
-            print(f"📱 Sending to {patient_data['name']}: {reminder}")
+            print(f"Sending reminder to {patient_data['name']}: {reminder}")
         
         elif "SEND_ENCOURAGEMENT" in recommendation["actions"]:
             encouragement = self.reminder_tool. generate_encouragement(patient_data["name"])
             actions_taken.append({"action": "ENCOURAGEMENT", "message": encouragement})
-            print(f"🎉 Sending to {patient_data['name']}: {encouragement}")
+            print(f"Sending encouragement to {patient_data['name']}: {encouragement}")
         
         else:
             reminder = self.reminder_tool.generate_check_in(patient_data["name"])

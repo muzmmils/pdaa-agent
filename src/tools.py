@@ -49,11 +49,11 @@ class ReminderTool:
     
     def __init__(self):
         self.templates = {
-            "medication": "💊 Reminder: Time to take your {med_name}.  {frequency}.",
-            "therapy": "🏃 Reminder: Don't forget your {activity} today! ",
-            "follow_up": "📅 Your follow-up appointment is on {date}. Please confirm attendance.",
-            "general": "👋 Hi {name}! Just checking in on your recovery. How are you feeling today? ",
-            "encouragement": "🌟 Great job staying on track, {name}! Keep up the good work!"
+            "medication": "[MED] Reminder: Time to take your {med_name}.  {frequency}.",
+            "therapy": "[THERAPY] Reminder: Don't forget your {activity} today! ",
+            "follow_up": "[APPT] Your follow-up appointment is on {date}. Please confirm attendance.",
+            "general": "Hi {name}! Just checking in on your recovery. How are you feeling today? ",
+            "encouragement": "Great job staying on track, {name}! Keep up the good work!"
         }
     
     def generate_medication_reminder(self, patient_name: str, medication: Dict) -> str:
@@ -78,6 +78,286 @@ class ReminderTool:
     def generate_encouragement(self, patient_name: str) -> str:
         """Generate encouragement message."""
         return self.templates["encouragement"].format(name=patient_name)
+
+
+class DailyPlannerTool:
+    """Creates and manages daily schedules for patients."""
+    
+    def __init__(self):
+        self.task_categories = {
+            "medication": {"icon": "[MED]", "priority": "HIGH"},
+            "therapy": {"icon": "[THR]", "priority": "MEDIUM"},
+            "diet": {"icon": "[DIET]", "priority": "MEDIUM"},
+            "vitals": {"icon": "[VIT]", "priority": "HIGH"},
+            "appointment": {"icon": "[APPT]", "priority": "HIGH"}
+        }
+    
+    def create_daily_plan(self, patient_data: Dict, day: int) -> Dict[str, Any]:
+        """Generate a structured daily plan for the patient."""
+        plan = patient_data.get("discharge_plan", {})
+        
+        schedule = []
+        
+        # Parse medications into timed tasks
+        for med in plan.get("medications", []):
+            tasks = self._parse_medication_schedule(med, day)
+            schedule.extend(tasks)
+        
+        # Parse therapy activities
+        for therapy in plan.get("therapy", []):
+            tasks = self._parse_therapy_schedule(therapy, day)
+            schedule.extend(tasks)
+        
+        # Add diet reminders
+        diet_tasks = self._create_diet_schedule(plan.get("diet", []), day)
+        schedule.extend(diet_tasks)
+        
+        # Add follow-up reminder if approaching
+        if plan.get("follow_up"):
+            follow_up_task = self._check_follow_up_reminder(plan["follow_up"], day)
+            if follow_up_task:
+                schedule.append(follow_up_task)
+        
+        # Sort by time
+        schedule.sort(key=lambda x: x["time"])
+        
+        return {
+            "patient_id": patient_data["id"],
+            "day": day,
+            "date": (datetime.now() + timedelta(days=day-1)).strftime("%Y-%m-%d"),
+            "total_tasks": len(schedule),
+            "schedule": schedule,
+            "summary": self._create_summary(schedule)
+        }
+    
+    def _parse_medication_schedule(self, med_string: str, day: int) -> List[Dict]:
+        """Parse medication into scheduled tasks."""
+        parts = med_string.split(" - ")
+        med_name = parts[0] if parts else med_string
+        frequency = parts[1].lower() if len(parts) > 1 else "daily"
+        
+        tasks = []
+        
+        if "twice daily" in frequency or "2x" in frequency:
+            tasks.append(self._create_task("medication", f"Take {med_name}", "08:00", day))
+            tasks.append(self._create_task("medication", f"Take {med_name}", "20:00", day))
+        elif "three times" in frequency or "3x" in frequency:
+            tasks.append(self._create_task("medication", f"Take {med_name}", "08:00", day))
+            tasks.append(self._create_task("medication", f"Take {med_name}", "14:00", day))
+            tasks.append(self._create_task("medication", f"Take {med_name}", "20:00", day))
+        else:  # daily or as needed
+            tasks.append(self._create_task("medication", f"Take {med_name}", "09:00", day))
+        
+        return tasks
+    
+    def _parse_therapy_schedule(self, therapy_string: str, day: int) -> List[Dict]:
+        """Parse therapy into scheduled tasks."""
+        parts = therapy_string.split(" - ")
+        activity = parts[0] if parts else therapy_string
+        frequency = parts[1].lower() if len(parts) > 1 else "daily"
+        
+        tasks = []
+        
+        if "twice daily" in frequency or "2x" in frequency:
+            tasks.append(self._create_task("therapy", activity, "10:00", day))
+            tasks.append(self._create_task("therapy", activity, "16:00", day))
+        elif "3x week" in frequency:
+            # Only add on Mon/Wed/Fri (days 1,3,5)
+            if day % 2 == 1:
+                tasks.append(self._create_task("therapy", activity, "11:00", day))
+        else:
+            tasks.append(self._create_task("therapy", activity, "10:30", day))
+        
+        return tasks
+    
+    def _create_diet_schedule(self, diet_items: List[str], day: int) -> List[Dict]:
+        """Create meal reminder tasks."""
+        if not diet_items:
+            return []
+        
+        diet_description = ", ".join(diet_items)
+        
+        return [
+            self._create_task("diet", f"Breakfast - {diet_description}", "07:30", day),
+            self._create_task("diet", f"Lunch - {diet_description}", "12:30", day),
+            self._create_task("diet", f"Dinner - {diet_description}", "18:30", day)
+        ]
+    
+    def _check_follow_up_reminder(self, follow_up_date: str, current_day: int) -> Optional[Dict]:
+        """Check if follow-up appointment reminder needed."""
+        try:
+            follow_up = datetime.strptime(follow_up_date, "%Y-%m-%d")
+            days_until = (follow_up - datetime.now()).days
+            
+            # Remind if within 2 days
+            if 0 <= days_until <= 2:
+                return self._create_task(
+                    "appointment", 
+                    f"Follow-up appointment on {follow_up_date}",
+                    "09:00",
+                    current_day
+                )
+        except:
+            pass
+        
+        return None
+    
+    def _create_task(self, category: str, description: str, time: str, day: int) -> Dict:
+        """Create a task entry."""
+        cat_info = self.task_categories.get(category, {"icon": "[TASK]", "priority": "MEDIUM"})
+        
+        return {
+            "id": f"T{day:02d}{time.replace(':', '')}",
+            "category": category,
+            "icon": cat_info["icon"],
+            "priority": cat_info["priority"],
+            "description": description,
+            "time": time,
+            "day": day,
+            "completed": False
+        }
+    
+    def _create_summary(self, schedule: List[Dict]) -> Dict[str, int]:
+        """Create summary statistics for the day."""
+        summary = {}
+        for task in schedule:
+            category = task["category"]
+            summary[category] = summary.get(category, 0) + 1
+        
+        return summary
+    
+    def mark_task_complete(self, plan: Dict, task_id: str) -> bool:
+        """Mark a specific task as completed."""
+        for task in plan.get("schedule", []):
+            if task["id"] == task_id:
+                task["completed"] = True
+                return True
+        return False
+    
+    def get_completion_rate(self, plan: Dict) -> float:
+        """Calculate task completion rate for the day."""
+        schedule = plan.get("schedule", [])
+        if not schedule:
+            return 100.0
+        
+        completed = sum(1 for task in schedule if task.get("completed", False))
+        return (completed / len(schedule)) * 100
+
+
+class PatientEngagementSimulator:
+    """Simulates realistic patient engagement patterns."""
+    
+    def __init__(self):
+        self.engagement_profiles = {
+            "high": {"base_adherence": 0.90, "variability": 0.10},
+            "medium": {"base_adherence": 0.70, "variability": 0.20},
+            "low": {"base_adherence": 0.50, "variability": 0.25}
+        }
+        
+        self.fatigue_factor = 0.02  # Adherence drops 2% per day (fatigue)
+        self.weekend_boost = 0.05   # Weekend adherence improves 5%
+    
+    def simulate_task_completion(self, patient_data: Dict, daily_plan: Dict, day: int) -> Dict[str, Any]:
+        """Simulate which tasks patient completes based on realistic factors."""
+        
+        # Determine engagement profile based on risk
+        risk_to_engagement = {
+            "low": "high",      # Low risk patients often more engaged
+            "medium": "medium",
+            "high": "low"       # High risk patients struggle more
+        }
+        
+        engagement_level = risk_to_engagement.get(patient_data.get("risk", "medium"), "medium")
+        profile = self.engagement_profiles[engagement_level]
+        
+        # Calculate daily adherence probability with factors
+        base_prob = profile["base_adherence"]
+        
+        # Apply fatigue (adherence drops over time)
+        fatigue_penalty = self.fatigue_factor * (day - 1)
+        
+        # Weekend boost (patients have more time)
+        weekend_bonus = self.weekend_boost if day % 7 in [6, 0] else 0
+        
+        # Random daily variation
+        daily_variation = random.uniform(-profile["variability"], profile["variability"])
+        
+        final_prob = max(0.1, min(0.95, base_prob - fatigue_penalty + weekend_bonus + daily_variation))
+        
+        # Simulate completion for each task
+        completed_tasks = []
+        missed_tasks = []
+        
+        for task in daily_plan.get("schedule", []):
+            # High priority tasks more likely to be completed
+            priority_multiplier = 1.2 if task["priority"] == "HIGH" else 1.0
+            
+            task_prob = final_prob * priority_multiplier
+            
+            if random.random() < task_prob:
+                task["completed"] = True
+                completed_tasks.append(task["id"])
+            else:
+                task["completed"] = False
+                missed_tasks.append({
+                    "id": task["id"],
+                    "category": task["category"],
+                    "description": task["description"],
+                    "time": task["time"]
+                })
+        
+        # Calculate adherence metrics
+        total_tasks = len(daily_plan.get("schedule", []))
+        completion_rate = (len(completed_tasks) / total_tasks * 100) if total_tasks > 0 else 100
+        
+        # Determine adherence by category
+        medication_tasks = [t for t in daily_plan["schedule"] if t["category"] == "medication"]
+        therapy_tasks = [t for t in daily_plan["schedule"] if t["category"] == "therapy"]
+        diet_tasks = [t for t in daily_plan["schedule"] if t["category"] == "diet"]
+        
+        return {
+            "patient_id": patient_data["id"],
+            "day": day,
+            "engagement_level": engagement_level,
+            "completion_rate": round(completion_rate, 1),
+            "completed_tasks": completed_tasks,
+            "missed_tasks": missed_tasks,
+            "medication_taken": all(t.get("completed", False) for t in medication_tasks) if medication_tasks else True,
+            "therapy_done": all(t.get("completed", False) for t in therapy_tasks) if therapy_tasks else True,
+            "diet_followed": all(t.get("completed", False) for t in diet_tasks) if diet_tasks else True,
+            "tasks_completed": len(completed_tasks),
+            "tasks_total": total_tasks,
+            "adherence_probability": round(final_prob, 2)
+        }
+    
+    def get_engagement_insights(self, patient_data: Dict, history: List[Dict]) -> Dict[str, Any]:
+        """Analyze engagement patterns over time."""
+        if not history:
+            return {"status": "insufficient_data"}
+        
+        completion_rates = [h["completion_rate"] for h in history]
+        
+        return {
+            "average_completion": round(sum(completion_rates) / len(completion_rates), 1),
+            "trend": "improving" if completion_rates[-1] > completion_rates[0] else "declining",
+            "consistency": round(100 - (max(completion_rates) - min(completion_rates)), 1),
+            "days_tracked": len(history),
+            "most_missed_category": self._find_most_missed_category(history)
+        }
+    
+    def _find_most_missed_category(self, history: List[Dict]) -> str:
+        """Find which category is missed most often."""
+        category_misses = {}
+        
+        for day_data in history:
+            for missed_task in day_data.get("missed_tasks", []):
+                cat = missed_task["category"]
+                category_misses[cat] = category_misses.get(cat, 0) + 1
+        
+        if not category_misses:
+            return "none"
+        
+        return max(category_misses, key=category_misses.get)
 
 
 class AlertTool:
@@ -108,14 +388,14 @@ class AlertTool:
     def _send_alert(self, alert: Dict):
         """Simulate sending alert (print/log/email)."""
         severity_emoji = {
-            "LOW": "🟢",
-            "MEDIUM": "🟡", 
-            "HIGH": "🟠",
-            "CRITICAL": "🔴"
+            "LOW": "[LOW]",
+            "MEDIUM": "[MEDIUM]", 
+            "HIGH": "[HIGH]",
+            "CRITICAL": "[CRITICAL]"
         }
         
-        emoji = severity_emoji.get(alert["severity"], "⚪")
-        print(f"\n{emoji} ALERT [{alert['severity']}] - Patient {alert['patient_id']}")
+        emoji = severity_emoji.get(alert["severity"], "[ALERT]")
+        print(f"\n{emoji} ALERT - Patient {alert['patient_id']}")
         print(f"   Type: {alert['type']}")
         print(f"   Message: {alert['message']}")
         print(f"   Time: {alert['timestamp']}\n")
@@ -172,25 +452,6 @@ class AdherenceScoreTool:
             return "D"
         else:
             return "F"
-    
-    def simulate_daily_adherence(self, risk_level: str) -> Dict[str, bool]:
-        """Simulate patient adherence based on risk level (for testing)."""
-        # Higher risk patients have lower adherence probability
-        adherence_prob = {
-            "low": 0.9,
-            "medium": 0.75,
-            "high": 0.6
-        }
-        
-        prob = adherence_prob.get(risk_level, 0.7)
-        
-        return {
-            "medication_taken": random.random() < prob,
-            "therapy_done": random.random() < (prob - 0.1),
-            "diet_followed": random.random() < (prob - 0.05),
-            "tasks_completed": random.randint(int(prob * 3), 5),
-            "tasks_total": 5
-        }
 
 
 class RiskStratifierTool:
