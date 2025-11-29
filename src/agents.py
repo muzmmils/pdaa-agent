@@ -177,7 +177,32 @@ class AnalyzerAgent(BaseAgent):
     
     def _chain_of_thought_analysis(self, patient: Dict, score: Dict, 
                                     risk: Dict, monitoring: Dict) -> str:
-        """Generate Chain-of-Thought analysis."""
+        """Generate Chain-of-Thought analysis.
+
+        If Gemini model is available, generate an enriched summary; otherwise fallback
+        to deterministic template below.
+        """
+        
+        # Try Gemini for richer reasoning
+        if self.model:
+            try:
+                prompt = (
+                    "You are a clinical adherence analyst. Summarize today's adherence and risk "
+                    "for the patient in 6-8 bullet points with clear, actionable insights. Include: "
+                    "(1) adherence score with interpretation, (2) missed tasks and likely impact, "
+                    "(3) risk class and drivers, (4) near-term recommendations, (5) next check timing.\n\n"
+                    f"Patient: {patient['name']} (ID: {patient['id']})\n"
+                    f"Day: {monitoring['day']}\n"
+                    f"Score: {score['total_score']} (grade {score['grade']})\n"
+                    f"Missed tasks: {', '.join(monitoring['missed_tasks']) or 'None'}\n"
+                    f"Risk class: {risk['risk_class']} (factors: {risk['factors']})\n"
+                )
+                resp = self.model.generate_content(prompt)
+                if hasattr(resp, 'text') and resp.text:
+                    return resp.text.strip()
+            except Exception as e:
+                # Fallback silently to template if Gemini call fails
+                pass
         
         analysis = f"""
 === Chain-of-Thought Analysis ===
