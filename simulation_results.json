@@ -1,0 +1,3389 @@
+{
+  "simulation_start": "2025-11-29T14:42:00.804563",
+  "total_days": 7,
+  "total_patients": 5,
+  "patient_results": {
+    "P001": {
+      "patient_id": "P001",
+      "patient_name": "John Doe",
+      "daily_results": [
+        {
+          "day": 1,
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 1,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Aspirin 75mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Metformin 500mg",
+                  "frequency": "twice daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Physical therapy",
+                  "frequency": "30 min daily"
+                },
+                {
+                  "activity": "Walking",
+                  "frequency": "15 min twice daily"
+                }
+              ],
+              "diet": [
+                "Low sodium",
+                "Diabetic-friendly"
+              ],
+              "follow_up_date": "2025-12-05",
+              "risk_level": "high",
+              "condition": "Post cardiac surgery"
+            },
+            "missed_tasks": [
+              "medication",
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Aspirin 75mg.  daily.",
+              "\ud83d\udc8a Reminder: Time to take your Metformin 500mg.  twice daily.",
+              "\ud83c\udfc3 Reminder: Don't forget your Physical therapy today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Walking today! "
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 3,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 46.0,
+              "breakdown": {
+                "task_completion": 36.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 3,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: John Doe (ID: P001)\nDay: 1\n\nStep 1: Assess Current Adherence\n- Total Score: 46.0/100 (Grade: F)\n- Medication: \u2717\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: medication, therapy\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 1
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 1,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 46.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi John Doe! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 2,
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 2,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Aspirin 75mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Metformin 500mg",
+                  "frequency": "twice daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Physical therapy",
+                  "frequency": "30 min daily"
+                },
+                {
+                  "activity": "Walking",
+                  "frequency": "15 min twice daily"
+                }
+              ],
+              "diet": [
+                "Low sodium",
+                "Diabetic-friendly"
+              ],
+              "follow_up_date": "2025-12-05",
+              "risk_level": "high",
+              "condition": "Post cardiac surgery"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Physical therapy today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Walking today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 85.0,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 3,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: John Doe (ID: P001)\nDay: 2\n\nStep 1: Assess Current Adherence\n- Total Score: 85.0/100 (Grade: B)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: No\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 2
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 2,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 85.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi John Doe! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 3,
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 3,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Aspirin 75mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Metformin 500mg",
+                  "frequency": "twice daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Physical therapy",
+                  "frequency": "30 min daily"
+                },
+                {
+                  "activity": "Walking",
+                  "frequency": "15 min twice daily"
+                }
+              ],
+              "diet": [
+                "Low sodium",
+                "Diabetic-friendly"
+              ],
+              "follow_up_date": "2025-12-05",
+              "risk_level": "high",
+              "condition": "Post cardiac surgery"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Physical therapy today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Walking today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 73.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 3,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: John Doe (ID: P001)\nDay: 3\n\nStep 1: Assess Current Adherence\n- Total Score: 73.0/100 (Grade: C)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: No\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 3
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 3,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 73.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi John Doe! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 4,
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 4,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Aspirin 75mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Metformin 500mg",
+                  "frequency": "twice daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Physical therapy",
+                  "frequency": "30 min daily"
+                },
+                {
+                  "activity": "Walking",
+                  "frequency": "15 min twice daily"
+                }
+              ],
+              "diet": [
+                "Low sodium",
+                "Diabetic-friendly"
+              ],
+              "follow_up_date": "2025-12-05",
+              "risk_level": "high",
+              "condition": "Post cardiac surgery"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 1,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 52.0,
+              "breakdown": {
+                "task_completion": 12.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 4,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: John Doe (ID: P001)\nDay: 4\n\nStep 1: Assess Current Adherence\n- Total Score: 52.0/100 (Grade: F)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: declining\n- Age Risk: normal\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 4
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 4,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 52.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi John Doe! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 5,
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 5,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Aspirin 75mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Metformin 500mg",
+                  "frequency": "twice daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Physical therapy",
+                  "frequency": "30 min daily"
+                },
+                {
+                  "activity": "Walking",
+                  "frequency": "15 min twice daily"
+                }
+              ],
+              "diet": [
+                "Low sodium",
+                "Diabetic-friendly"
+              ],
+              "follow_up_date": "2025-12-05",
+              "risk_level": "high",
+              "condition": "Post cardiac surgery"
+            },
+            "missed_tasks": [
+              "therapy",
+              "diet"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Physical therapy today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Walking today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": false,
+              "tasks_completed": 3,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 51.0,
+              "breakdown": {
+                "task_completion": 36.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 0
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 3,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: John Doe (ID: P001)\nDay: 5\n\nStep 1: Assess Current Adherence\n- Total Score: 51.0/100 (Grade: F)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2717\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy, diet\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 5
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 5,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 51.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi John Doe! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 6,
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 6,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Aspirin 75mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Metformin 500mg",
+                  "frequency": "twice daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Physical therapy",
+                  "frequency": "30 min daily"
+                },
+                {
+                  "activity": "Walking",
+                  "frequency": "15 min twice daily"
+                }
+              ],
+              "diet": [
+                "Low sodium",
+                "Diabetic-friendly"
+              ],
+              "follow_up_date": "2025-12-05",
+              "risk_level": "high",
+              "condition": "Post cardiac surgery"
+            },
+            "missed_tasks": [
+              "medication",
+              "diet"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Aspirin 75mg.  daily.",
+              "\ud83d\udc8a Reminder: Time to take your Metformin 500mg.  twice daily."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 2,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 39.0,
+              "breakdown": {
+                "task_completion": 24.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 4,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: John Doe (ID: P001)\nDay: 6\n\nStep 1: Assess Current Adherence\n- Total Score: 39.0/100 (Grade: F)\n- Medication: \u2717\n- Therapy: \u2713\n- Diet: \u2717\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: declining\n- Age Risk: normal\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: medication, diet\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 6
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 6,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 39.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi John Doe! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 7,
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 7,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Aspirin 75mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Metformin 500mg",
+                  "frequency": "twice daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Physical therapy",
+                  "frequency": "30 min daily"
+                },
+                {
+                  "activity": "Walking",
+                  "frequency": "15 min twice daily"
+                }
+              ],
+              "diet": [
+                "Low sodium",
+                "Diabetic-friendly"
+              ],
+              "follow_up_date": "2025-12-05",
+              "risk_level": "high",
+              "condition": "Post cardiac surgery"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Physical therapy today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Walking today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 3,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 61.0,
+              "breakdown": {
+                "task_completion": 36.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "D"
+            },
+            "risk_assessment": {
+              "risk_class": "HIGH",
+              "risk_score": 5,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: John Doe (ID: P001)\nDay: 7\n\nStep 1: Assess Current Adherence\n- Total Score: 61.0/100 (Grade: D)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: declining\n- Age Risk: normal\n- Final Risk Class: HIGH\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nImmediate intervention recommended.  Consider care team escalation.\n================================",
+            "day": 7
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 7,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 61.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi John Doe! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        }
+      ],
+      "average_score": 58.142857142857146,
+      "min_score": 39.0,
+      "max_score": 85.0,
+      "total_escalations": 0,
+      "final_risk": "HIGH"
+    },
+    "P002": {
+      "patient_id": "P002",
+      "patient_name": "Jane Smith",
+      "daily_results": [
+        {
+          "day": 1,
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 1,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Ibuprofen 400mg",
+                  "frequency": "as needed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                },
+                {
+                  "activity": "Light stretching",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Regular"
+              ],
+              "follow_up_date": "2025-12-10",
+              "risk_level": "low",
+              "condition": "Minor surgery recovery"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 88.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Jane Smith (ID: P002)\nDay: 1\n\nStep 1: Assess Current Adherence\n- Total Score: 88.0/100 (Grade: B)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 1
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 1,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 88.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, Jane Smith! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 2,
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 2,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Ibuprofen 400mg",
+                  "frequency": "as needed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                },
+                {
+                  "activity": "Light stretching",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Regular"
+              ],
+              "follow_up_date": "2025-12-10",
+              "risk_level": "low",
+              "condition": "Minor surgery recovery"
+            },
+            "missed_tasks": [
+              "medication",
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Ibuprofen 400mg.  as needed.",
+              "\ud83c\udfc3 Reminder: Don't forget your Rest today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Light stretching today! "
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 70.0,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Jane Smith (ID: P002)\nDay: 2\n\nStep 1: Assess Current Adherence\n- Total Score: 70.0/100 (Grade: C)\n- Medication: \u2717\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: medication, therapy\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 2
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 2,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 70.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi Jane Smith! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 3,
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 3,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Ibuprofen 400mg",
+                  "frequency": "as needed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                },
+                {
+                  "activity": "Light stretching",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Regular"
+              ],
+              "follow_up_date": "2025-12-10",
+              "risk_level": "low",
+              "condition": "Minor surgery recovery"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 100,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "A"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Jane Smith (ID: P002)\nDay: 3\n\nStep 1: Assess Current Adherence\n- Total Score: 100/100 (Grade: A)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 3
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 3,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 100/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, Jane Smith! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 4,
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 4,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Ibuprofen 400mg",
+                  "frequency": "as needed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                },
+                {
+                  "activity": "Light stretching",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Regular"
+              ],
+              "follow_up_date": "2025-12-10",
+              "risk_level": "low",
+              "condition": "Minor surgery recovery"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Rest today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Light stretching today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 2,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 49.0,
+              "breakdown": {
+                "task_completion": 24.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Jane Smith (ID: P002)\nDay: 4\n\nStep 1: Assess Current Adherence\n- Total Score: 49.0/100 (Grade: F)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 4
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 4,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 49.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi Jane Smith! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 5,
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 5,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Ibuprofen 400mg",
+                  "frequency": "as needed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                },
+                {
+                  "activity": "Light stretching",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Regular"
+              ],
+              "follow_up_date": "2025-12-10",
+              "risk_level": "low",
+              "condition": "Minor surgery recovery"
+            },
+            "missed_tasks": [
+              "medication"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Ibuprofen 400mg.  as needed."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 85.0,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Jane Smith (ID: P002)\nDay: 5\n\nStep 1: Assess Current Adherence\n- Total Score: 85.0/100 (Grade: B)\n- Medication: \u2717\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: medication\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 5
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 5,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 85.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, Jane Smith! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 6,
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 6,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Ibuprofen 400mg",
+                  "frequency": "as needed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                },
+                {
+                  "activity": "Light stretching",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Regular"
+              ],
+              "follow_up_date": "2025-12-10",
+              "risk_level": "low",
+              "condition": "Minor surgery recovery"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Rest today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Light stretching today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 85.0,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Jane Smith (ID: P002)\nDay: 6\n\nStep 1: Assess Current Adherence\n- Total Score: 85.0/100 (Grade: B)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 6
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 6,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 85.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, Jane Smith! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 7,
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 7,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Ibuprofen 400mg",
+                  "frequency": "as needed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                },
+                {
+                  "activity": "Light stretching",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Regular"
+              ],
+              "follow_up_date": "2025-12-10",
+              "risk_level": "low",
+              "condition": "Minor surgery recovery"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 3,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 76.0,
+              "breakdown": {
+                "task_completion": 36.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Jane Smith (ID: P002)\nDay: 7\n\nStep 1: Assess Current Adherence\n- Total Score: 76.0/100 (Grade: C)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 7
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 7,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 76.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi Jane Smith! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        }
+      ],
+      "average_score": 79.0,
+      "min_score": 49.0,
+      "max_score": 100,
+      "total_escalations": 0,
+      "final_risk": "LOW"
+    },
+    "P003": {
+      "patient_id": "P003",
+      "patient_name": "Robert Johnson",
+      "daily_results": [
+        {
+          "day": 1,
+          "monitoring": {
+            "patient_id": "P003",
+            "day": 1,
+            "plan": {
+              "patient_id": "P003",
+              "patient_name": "Robert Johnson",
+              "medications": [
+                {
+                  "name": "Warfarin 5mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Lisinopril 10mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Atorvastatin 20mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab",
+                  "frequency": "3x week"
+                },
+                {
+                  "activity": "Blood pressure monitoring",
+                  "frequency": "daily"
+                }
+              ],
+              "diet": [
+                "Heart-healthy",
+                "Low cholesterol"
+              ],
+              "follow_up_date": "2025-12-03",
+              "risk_level": "high",
+              "condition": "Heart failure management"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 3,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P003",
+            "adherence_score": {
+              "total_score": 76.0,
+              "breakdown": {
+                "task_completion": 36.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 4,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "elevated"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Robert Johnson (ID: P003)\nDay: 1\n\nStep 1: Assess Current Adherence\n- Total Score: 76.0/100 (Grade: C)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: elevated\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 1
+          },
+          "escalation": {
+            "patient_id": "P003",
+            "day": 1,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 76.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi Robert Johnson! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 2,
+          "monitoring": {
+            "patient_id": "P003",
+            "day": 2,
+            "plan": {
+              "patient_id": "P003",
+              "patient_name": "Robert Johnson",
+              "medications": [
+                {
+                  "name": "Warfarin 5mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Lisinopril 10mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Atorvastatin 20mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab",
+                  "frequency": "3x week"
+                },
+                {
+                  "activity": "Blood pressure monitoring",
+                  "frequency": "daily"
+                }
+              ],
+              "diet": [
+                "Heart-healthy",
+                "Low cholesterol"
+              ],
+              "follow_up_date": "2025-12-03",
+              "risk_level": "high",
+              "condition": "Heart failure management"
+            },
+            "missed_tasks": [
+              "medication",
+              "therapy",
+              "diet"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Warfarin 5mg.  daily.",
+              "\ud83d\udc8a Reminder: Time to take your Lisinopril 10mg.  daily.",
+              "\ud83d\udc8a Reminder: Time to take your Atorvastatin 20mg.  daily.",
+              "\ud83c\udfc3 Reminder: Don't forget your Cardiac rehab today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Blood pressure monitoring today! "
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": false,
+              "diet_followed": false,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P003",
+            "adherence_score": {
+              "total_score": 48.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 0,
+                "diet_adherence": 0
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 4,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "elevated"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Robert Johnson (ID: P003)\nDay: 2\n\nStep 1: Assess Current Adherence\n- Total Score: 48.0/100 (Grade: F)\n- Medication: \u2717\n- Therapy: \u2717\n- Diet: \u2717\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: elevated\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: medication, therapy, diet\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 2
+          },
+          "escalation": {
+            "patient_id": "P003",
+            "day": 2,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 48.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi Robert Johnson! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 3,
+          "monitoring": {
+            "patient_id": "P003",
+            "day": 3,
+            "plan": {
+              "patient_id": "P003",
+              "patient_name": "Robert Johnson",
+              "medications": [
+                {
+                  "name": "Warfarin 5mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Lisinopril 10mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Atorvastatin 20mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab",
+                  "frequency": "3x week"
+                },
+                {
+                  "activity": "Blood pressure monitoring",
+                  "frequency": "daily"
+                }
+              ],
+              "diet": [
+                "Heart-healthy",
+                "Low cholesterol"
+              ],
+              "follow_up_date": "2025-12-03",
+              "risk_level": "high",
+              "condition": "Heart failure management"
+            },
+            "missed_tasks": [
+              "medication",
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Warfarin 5mg.  daily.",
+              "\ud83d\udc8a Reminder: Time to take your Lisinopril 10mg.  daily.",
+              "\ud83d\udc8a Reminder: Time to take your Atorvastatin 20mg.  daily.",
+              "\ud83c\udfc3 Reminder: Don't forget your Cardiac rehab today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Blood pressure monitoring today! "
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P003",
+            "adherence_score": {
+              "total_score": 58.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 4,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "elevated"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Robert Johnson (ID: P003)\nDay: 3\n\nStep 1: Assess Current Adherence\n- Total Score: 58.0/100 (Grade: F)\n- Medication: \u2717\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: elevated\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: medication, therapy\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 3
+          },
+          "escalation": {
+            "patient_id": "P003",
+            "day": 3,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 58.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi Robert Johnson! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 4,
+          "monitoring": {
+            "patient_id": "P003",
+            "day": 4,
+            "plan": {
+              "patient_id": "P003",
+              "patient_name": "Robert Johnson",
+              "medications": [
+                {
+                  "name": "Warfarin 5mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Lisinopril 10mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Atorvastatin 20mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab",
+                  "frequency": "3x week"
+                },
+                {
+                  "activity": "Blood pressure monitoring",
+                  "frequency": "daily"
+                }
+              ],
+              "diet": [
+                "Heart-healthy",
+                "Low cholesterol"
+              ],
+              "follow_up_date": "2025-12-03",
+              "risk_level": "high",
+              "condition": "Heart failure management"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Cardiac rehab today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Blood pressure monitoring today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P003",
+            "adherence_score": {
+              "total_score": 73.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "HIGH",
+              "risk_score": 5,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "elevated"
+              },
+              "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Robert Johnson (ID: P003)\nDay: 4\n\nStep 1: Assess Current Adherence\n- Total Score: 73.0/100 (Grade: C)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: declining\n- Age Risk: elevated\n- Final Risk Class: HIGH\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: No\n\nStep 4: Conclusion\nImmediate intervention recommended.  Consider care team escalation.\n================================",
+            "day": 4
+          },
+          "escalation": {
+            "patient_id": "P003",
+            "day": 4,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 73.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi Robert Johnson! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 5,
+          "monitoring": {
+            "patient_id": "P003",
+            "day": 5,
+            "plan": {
+              "patient_id": "P003",
+              "patient_name": "Robert Johnson",
+              "medications": [
+                {
+                  "name": "Warfarin 5mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Lisinopril 10mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Atorvastatin 20mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab",
+                  "frequency": "3x week"
+                },
+                {
+                  "activity": "Blood pressure monitoring",
+                  "frequency": "daily"
+                }
+              ],
+              "diet": [
+                "Heart-healthy",
+                "Low cholesterol"
+              ],
+              "follow_up_date": "2025-12-03",
+              "risk_level": "high",
+              "condition": "Heart failure management"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P003",
+            "adherence_score": {
+              "total_score": 100,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "A"
+            },
+            "risk_assessment": {
+              "risk_class": "HIGH",
+              "risk_score": 5,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "elevated"
+              },
+              "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Robert Johnson (ID: P003)\nDay: 5\n\nStep 1: Assess Current Adherence\n- Total Score: 100/100 (Grade: A)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: declining\n- Age Risk: elevated\n- Final Risk Class: HIGH\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nImmediate intervention recommended.  Consider care team escalation.\n================================",
+            "day": 5
+          },
+          "escalation": {
+            "patient_id": "P003",
+            "day": 5,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 100/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, Robert Johnson! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 6,
+          "monitoring": {
+            "patient_id": "P003",
+            "day": 6,
+            "plan": {
+              "patient_id": "P003",
+              "patient_name": "Robert Johnson",
+              "medications": [
+                {
+                  "name": "Warfarin 5mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Lisinopril 10mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Atorvastatin 20mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab",
+                  "frequency": "3x week"
+                },
+                {
+                  "activity": "Blood pressure monitoring",
+                  "frequency": "daily"
+                }
+              ],
+              "diet": [
+                "Heart-healthy",
+                "Low cholesterol"
+              ],
+              "follow_up_date": "2025-12-03",
+              "risk_level": "high",
+              "condition": "Heart failure management"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P003",
+            "adherence_score": {
+              "total_score": 100,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "A"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 4,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "elevated"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Robert Johnson (ID: P003)\nDay: 6\n\nStep 1: Assess Current Adherence\n- Total Score: 100/100 (Grade: A)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: elevated\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 6
+          },
+          "escalation": {
+            "patient_id": "P003",
+            "day": 6,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 100/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi Robert Johnson! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 7,
+          "monitoring": {
+            "patient_id": "P003",
+            "day": 7,
+            "plan": {
+              "patient_id": "P003",
+              "patient_name": "Robert Johnson",
+              "medications": [
+                {
+                  "name": "Warfarin 5mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Lisinopril 10mg",
+                  "frequency": "daily"
+                },
+                {
+                  "name": "Atorvastatin 20mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab",
+                  "frequency": "3x week"
+                },
+                {
+                  "activity": "Blood pressure monitoring",
+                  "frequency": "daily"
+                }
+              ],
+              "diet": [
+                "Heart-healthy",
+                "Low cholesterol"
+              ],
+              "follow_up_date": "2025-12-03",
+              "risk_level": "high",
+              "condition": "Heart failure management"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Cardiac rehab today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Blood pressure monitoring today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P003",
+            "adherence_score": {
+              "total_score": 85.0,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 4,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "stable",
+                "age_risk": "elevated"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Robert Johnson (ID: P003)\nDay: 7\n\nStep 1: Assess Current Adherence\n- Total Score: 85.0/100 (Grade: B)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: high\n- Adherence Trend: stable\n- Age Risk: elevated\n- Final Risk Class: MEDIUM\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: No\n\nStep 4: Conclusion\nIncreased monitoring advised. Send additional reminders.\n================================",
+            "day": 7
+          },
+          "escalation": {
+            "patient_id": "P003",
+            "day": 7,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 85.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi Robert Johnson! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        }
+      ],
+      "average_score": 77.14285714285714,
+      "min_score": 48.0,
+      "max_score": 100,
+      "total_escalations": 0,
+      "final_risk": "MEDIUM"
+    },
+    "P004": {
+      "patient_id": "P004",
+      "patient_name": "Maria Garcia",
+      "daily_results": [
+        {
+          "day": 1,
+          "monitoring": {
+            "patient_id": "P004",
+            "day": 1,
+            "plan": {
+              "patient_id": "P004",
+              "patient_name": "Maria Garcia",
+              "medications": [
+                {
+                  "name": "Metformin 1000mg",
+                  "frequency": "twice daily"
+                },
+                {
+                  "name": "Glipizide 5mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Blood sugar monitoring",
+                  "frequency": "3x daily"
+                },
+                {
+                  "activity": "Exercise",
+                  "frequency": "20 min daily"
+                }
+              ],
+              "diet": [
+                "Diabetic diet",
+                "Low carb"
+              ],
+              "follow_up_date": "2025-12-08",
+              "risk_level": "medium",
+              "condition": "Diabetes management post-hospitalization"
+            },
+            "missed_tasks": [
+              "medication"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Metformin 1000mg.  twice daily.",
+              "\ud83d\udc8a Reminder: Time to take your Glipizide 5mg.  daily."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P004",
+            "adherence_score": {
+              "total_score": 73.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Maria Garcia (ID: P004)\nDay: 1\n\nStep 1: Assess Current Adherence\n- Total Score: 73.0/100 (Grade: C)\n- Medication: \u2717\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: medium\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: medication\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 1
+          },
+          "escalation": {
+            "patient_id": "P004",
+            "day": 1,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 73.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi Maria Garcia! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 2,
+          "monitoring": {
+            "patient_id": "P004",
+            "day": 2,
+            "plan": {
+              "patient_id": "P004",
+              "patient_name": "Maria Garcia",
+              "medications": [
+                {
+                  "name": "Metformin 1000mg",
+                  "frequency": "twice daily"
+                },
+                {
+                  "name": "Glipizide 5mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Blood sugar monitoring",
+                  "frequency": "3x daily"
+                },
+                {
+                  "activity": "Exercise",
+                  "frequency": "20 min daily"
+                }
+              ],
+              "diet": [
+                "Diabetic diet",
+                "Low carb"
+              ],
+              "follow_up_date": "2025-12-08",
+              "risk_level": "medium",
+              "condition": "Diabetes management post-hospitalization"
+            },
+            "missed_tasks": [
+              "diet"
+            ],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P004",
+            "adherence_score": {
+              "total_score": 78.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Maria Garcia (ID: P004)\nDay: 2\n\nStep 1: Assess Current Adherence\n- Total Score: 78.0/100 (Grade: C)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2717\n\nStep 2: Evaluate Risk Factors\n- Base Risk: medium\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: diet\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 2
+          },
+          "escalation": {
+            "patient_id": "P004",
+            "day": 2,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 78.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi Maria Garcia! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 3,
+          "monitoring": {
+            "patient_id": "P004",
+            "day": 3,
+            "plan": {
+              "patient_id": "P004",
+              "patient_name": "Maria Garcia",
+              "medications": [
+                {
+                  "name": "Metformin 1000mg",
+                  "frequency": "twice daily"
+                },
+                {
+                  "name": "Glipizide 5mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Blood sugar monitoring",
+                  "frequency": "3x daily"
+                },
+                {
+                  "activity": "Exercise",
+                  "frequency": "20 min daily"
+                }
+              ],
+              "diet": [
+                "Diabetic diet",
+                "Low carb"
+              ],
+              "follow_up_date": "2025-12-08",
+              "risk_level": "medium",
+              "condition": "Diabetes management post-hospitalization"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P004",
+            "adherence_score": {
+              "total_score": 88.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Maria Garcia (ID: P004)\nDay: 3\n\nStep 1: Assess Current Adherence\n- Total Score: 88.0/100 (Grade: B)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: medium\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 3
+          },
+          "escalation": {
+            "patient_id": "P004",
+            "day": 3,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 88.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, Maria Garcia! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 4,
+          "monitoring": {
+            "patient_id": "P004",
+            "day": 4,
+            "plan": {
+              "patient_id": "P004",
+              "patient_name": "Maria Garcia",
+              "medications": [
+                {
+                  "name": "Metformin 1000mg",
+                  "frequency": "twice daily"
+                },
+                {
+                  "name": "Glipizide 5mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Blood sugar monitoring",
+                  "frequency": "3x daily"
+                },
+                {
+                  "activity": "Exercise",
+                  "frequency": "20 min daily"
+                }
+              ],
+              "diet": [
+                "Diabetic diet",
+                "Low carb"
+              ],
+              "follow_up_date": "2025-12-08",
+              "risk_level": "medium",
+              "condition": "Diabetes management post-hospitalization"
+            },
+            "missed_tasks": [
+              "medication"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Metformin 1000mg.  twice daily.",
+              "\ud83d\udc8a Reminder: Time to take your Glipizide 5mg.  daily."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P004",
+            "adherence_score": {
+              "total_score": 85.0,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Maria Garcia (ID: P004)\nDay: 4\n\nStep 1: Assess Current Adherence\n- Total Score: 85.0/100 (Grade: B)\n- Medication: \u2717\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: medium\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: medication\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 4
+          },
+          "escalation": {
+            "patient_id": "P004",
+            "day": 4,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 85.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, Maria Garcia! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 5,
+          "monitoring": {
+            "patient_id": "P004",
+            "day": 5,
+            "plan": {
+              "patient_id": "P004",
+              "patient_name": "Maria Garcia",
+              "medications": [
+                {
+                  "name": "Metformin 1000mg",
+                  "frequency": "twice daily"
+                },
+                {
+                  "name": "Glipizide 5mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Blood sugar monitoring",
+                  "frequency": "3x daily"
+                },
+                {
+                  "activity": "Exercise",
+                  "frequency": "20 min daily"
+                }
+              ],
+              "diet": [
+                "Diabetic diet",
+                "Low carb"
+              ],
+              "follow_up_date": "2025-12-08",
+              "risk_level": "medium",
+              "condition": "Diabetes management post-hospitalization"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Blood sugar monitoring today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Exercise today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 2,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P004",
+            "adherence_score": {
+              "total_score": 49.0,
+              "breakdown": {
+                "task_completion": 24.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Maria Garcia (ID: P004)\nDay: 5\n\nStep 1: Assess Current Adherence\n- Total Score: 49.0/100 (Grade: F)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: medium\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 5
+          },
+          "escalation": {
+            "patient_id": "P004",
+            "day": 5,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 49.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi Maria Garcia! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 6,
+          "monitoring": {
+            "patient_id": "P004",
+            "day": 6,
+            "plan": {
+              "patient_id": "P004",
+              "patient_name": "Maria Garcia",
+              "medications": [
+                {
+                  "name": "Metformin 1000mg",
+                  "frequency": "twice daily"
+                },
+                {
+                  "name": "Glipizide 5mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Blood sugar monitoring",
+                  "frequency": "3x daily"
+                },
+                {
+                  "activity": "Exercise",
+                  "frequency": "20 min daily"
+                }
+              ],
+              "diet": [
+                "Diabetic diet",
+                "Low carb"
+              ],
+              "follow_up_date": "2025-12-08",
+              "risk_level": "medium",
+              "condition": "Diabetes management post-hospitalization"
+            },
+            "missed_tasks": [
+              "diet"
+            ],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P004",
+            "adherence_score": {
+              "total_score": 78.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Maria Garcia (ID: P004)\nDay: 6\n\nStep 1: Assess Current Adherence\n- Total Score: 78.0/100 (Grade: C)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2717\n\nStep 2: Evaluate Risk Factors\n- Base Risk: medium\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: diet\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 6
+          },
+          "escalation": {
+            "patient_id": "P004",
+            "day": 6,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 78.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi Maria Garcia! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 7,
+          "monitoring": {
+            "patient_id": "P004",
+            "day": 7,
+            "plan": {
+              "patient_id": "P004",
+              "patient_name": "Maria Garcia",
+              "medications": [
+                {
+                  "name": "Metformin 1000mg",
+                  "frequency": "twice daily"
+                },
+                {
+                  "name": "Glipizide 5mg",
+                  "frequency": "daily"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Blood sugar monitoring",
+                  "frequency": "3x daily"
+                },
+                {
+                  "activity": "Exercise",
+                  "frequency": "20 min daily"
+                }
+              ],
+              "diet": [
+                "Diabetic diet",
+                "Low carb"
+              ],
+              "follow_up_date": "2025-12-08",
+              "risk_level": "medium",
+              "condition": "Diabetes management post-hospitalization"
+            },
+            "missed_tasks": [
+              "medication"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Metformin 1000mg.  twice daily.",
+              "\ud83d\udc8a Reminder: Time to take your Glipizide 5mg.  daily."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P004",
+            "adherence_score": {
+              "total_score": 73.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: Maria Garcia (ID: P004)\nDay: 7\n\nStep 1: Assess Current Adherence\n- Total Score: 73.0/100 (Grade: C)\n- Medication: \u2717\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: medium\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: medication\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 7
+          },
+          "escalation": {
+            "patient_id": "P004",
+            "day": 7,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 73.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi Maria Garcia! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        }
+      ],
+      "average_score": 74.85714285714286,
+      "min_score": 49.0,
+      "max_score": 88.0,
+      "total_escalations": 0,
+      "final_risk": "LOW"
+    },
+    "P005": {
+      "patient_id": "P005",
+      "patient_name": "David Lee",
+      "daily_results": [
+        {
+          "day": 1,
+          "monitoring": {
+            "patient_id": "P005",
+            "day": 1,
+            "plan": {
+              "patient_id": "P005",
+              "patient_name": "David Lee",
+              "medications": [
+                {
+                  "name": "Antibiotic course",
+                  "frequency": "7 days"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Wound care",
+                  "frequency": "daily"
+                },
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "High protein for healing"
+              ],
+              "follow_up_date": "2025-12-12",
+              "risk_level": "low",
+              "condition": "Post-appendectomy"
+            },
+            "missed_tasks": [
+              "medication"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Antibiotic course.  7 days."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 5,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P005",
+            "adherence_score": {
+              "total_score": 85.0,
+              "breakdown": {
+                "task_completion": 60.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: David Lee (ID: P005)\nDay: 1\n\nStep 1: Assess Current Adherence\n- Total Score: 85.0/100 (Grade: B)\n- Medication: \u2717\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: medication\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 1
+          },
+          "escalation": {
+            "patient_id": "P005",
+            "day": 1,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 85.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, David Lee! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 2,
+          "monitoring": {
+            "patient_id": "P005",
+            "day": 2,
+            "plan": {
+              "patient_id": "P005",
+              "patient_name": "David Lee",
+              "medications": [
+                {
+                  "name": "Antibiotic course",
+                  "frequency": "7 days"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Wound care",
+                  "frequency": "daily"
+                },
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "High protein for healing"
+              ],
+              "follow_up_date": "2025-12-12",
+              "risk_level": "low",
+              "condition": "Post-appendectomy"
+            },
+            "missed_tasks": [
+              "medication"
+            ],
+            "reminders_generated": [
+              "\ud83d\udc8a Reminder: Time to take your Antibiotic course.  7 days."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P005",
+            "adherence_score": {
+              "total_score": 73.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: David Lee (ID: P005)\nDay: 2\n\nStep 1: Assess Current Adherence\n- Total Score: 73.0/100 (Grade: C)\n- Medication: \u2717\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: medication\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 2
+          },
+          "escalation": {
+            "patient_id": "P005",
+            "day": 2,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 73.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi David Lee! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 3,
+          "monitoring": {
+            "patient_id": "P005",
+            "day": 3,
+            "plan": {
+              "patient_id": "P005",
+              "patient_name": "David Lee",
+              "medications": [
+                {
+                  "name": "Antibiotic course",
+                  "frequency": "7 days"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Wound care",
+                  "frequency": "daily"
+                },
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "High protein for healing"
+              ],
+              "follow_up_date": "2025-12-12",
+              "risk_level": "low",
+              "condition": "Post-appendectomy"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P005",
+            "adherence_score": {
+              "total_score": 88.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: David Lee (ID: P005)\nDay: 3\n\nStep 1: Assess Current Adherence\n- Total Score: 88.0/100 (Grade: B)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 3
+          },
+          "escalation": {
+            "patient_id": "P005",
+            "day": 3,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 88.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, David Lee! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 4,
+          "monitoring": {
+            "patient_id": "P005",
+            "day": 4,
+            "plan": {
+              "patient_id": "P005",
+              "patient_name": "David Lee",
+              "medications": [
+                {
+                  "name": "Antibiotic course",
+                  "frequency": "7 days"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Wound care",
+                  "frequency": "daily"
+                },
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "High protein for healing"
+              ],
+              "follow_up_date": "2025-12-12",
+              "risk_level": "low",
+              "condition": "Post-appendectomy"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 3,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P005",
+            "adherence_score": {
+              "total_score": 76.0,
+              "breakdown": {
+                "task_completion": 36.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: David Lee (ID: P005)\nDay: 4\n\nStep 1: Assess Current Adherence\n- Total Score: 76.0/100 (Grade: C)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 4
+          },
+          "escalation": {
+            "patient_id": "P005",
+            "day": 4,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 76.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "\ud83d\udc4b Hi David Lee! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 5,
+          "monitoring": {
+            "patient_id": "P005",
+            "day": 5,
+            "plan": {
+              "patient_id": "P005",
+              "patient_name": "David Lee",
+              "medications": [
+                {
+                  "name": "Antibiotic course",
+                  "frequency": "7 days"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Wound care",
+                  "frequency": "daily"
+                },
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "High protein for healing"
+              ],
+              "follow_up_date": "2025-12-12",
+              "risk_level": "low",
+              "condition": "Post-appendectomy"
+            },
+            "missed_tasks": [
+              "diet"
+            ],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 2,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P005",
+            "adherence_score": {
+              "total_score": 54.0,
+              "breakdown": {
+                "task_completion": 24.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: David Lee (ID: P005)\nDay: 5\n\nStep 1: Assess Current Adherence\n- Total Score: 54.0/100 (Grade: F)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2717\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: diet\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 5
+          },
+          "escalation": {
+            "patient_id": "P005",
+            "day": 5,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 54.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi David Lee! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 6,
+          "monitoring": {
+            "patient_id": "P005",
+            "day": 6,
+            "plan": {
+              "patient_id": "P005",
+              "patient_name": "David Lee",
+              "medications": [
+                {
+                  "name": "Antibiotic course",
+                  "frequency": "7 days"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Wound care",
+                  "frequency": "daily"
+                },
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "High protein for healing"
+              ],
+              "follow_up_date": "2025-12-12",
+              "risk_level": "low",
+              "condition": "Post-appendectomy"
+            },
+            "missed_tasks": [
+              "therapy"
+            ],
+            "reminders_generated": [
+              "\ud83c\udfc3 Reminder: Don't forget your Wound care today! ",
+              "\ud83c\udfc3 Reminder: Don't forget your Rest today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": true,
+              "tasks_completed": 2,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P005",
+            "adherence_score": {
+              "total_score": 49.0,
+              "breakdown": {
+                "task_completion": 24.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 10
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 1,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: David Lee (ID: P005)\nDay: 6\n\nStep 1: Assess Current Adherence\n- Total Score: 49.0/100 (Grade: F)\n- Medication: \u2713\n- Therapy: \u2717\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: stable\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: therapy\n- Concerning Pattern: Yes\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 6
+          },
+          "escalation": {
+            "patient_id": "P005",
+            "day": 6,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 49.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "\ud83d\udc4b Hi David Lee! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 7,
+          "monitoring": {
+            "patient_id": "P005",
+            "day": 7,
+            "plan": {
+              "patient_id": "P005",
+              "patient_name": "David Lee",
+              "medications": [
+                {
+                  "name": "Antibiotic course",
+                  "frequency": "7 days"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Wound care",
+                  "frequency": "daily"
+                },
+                {
+                  "activity": "Rest",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "High protein for healing"
+              ],
+              "follow_up_date": "2025-12-12",
+              "risk_level": "low",
+              "condition": "Post-appendectomy"
+            },
+            "missed_tasks": [],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": true,
+              "tasks_completed": 4,
+              "tasks_total": 5
+            }
+          },
+          "analysis": {
+            "patient_id": "P005",
+            "adherence_score": {
+              "total_score": 88.0,
+              "breakdown": {
+                "task_completion": 48.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 10
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "low",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "=== Chain-of-Thought Analysis ===\nPatient: David Lee (ID: P005)\nDay: 7\n\nStep 1: Assess Current Adherence\n- Total Score: 88.0/100 (Grade: B)\n- Medication: \u2713\n- Therapy: \u2713\n- Diet: \u2713\n\nStep 2: Evaluate Risk Factors\n- Base Risk: low\n- Adherence Trend: declining\n- Age Risk: normal\n- Final Risk Class: LOW\n\nStep 3: Identify Concerns\n- Missed Tasks: None\n- Concerning Pattern: No\n\nStep 4: Conclusion\nContinue standard monitoring protocol.\n================================",
+            "day": 7
+          },
+          "escalation": {
+            "patient_id": "P005",
+            "day": 7,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING",
+                "SEND_FOLLOW_UP_REMINDER"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 88.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "\ud83c\udf1f Great job staying on track, David Lee! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        }
+      ],
+      "average_score": 73.28571428571429,
+      "min_score": 49.0,
+      "max_score": 88.0,
+      "total_escalations": 0,
+      "final_risk": "LOW"
+    }
+  },
+  "summary": {
+    "total_patients": 5,
+    "total_escalations": 0,
+    "overall_average_score": 72.4857142857143,
+    "high_risk_patients": [
+      "John Doe"
+    ],
+    "patients_needing_attention": 1
+  },
+  "simulation_end": "2025-11-29T14:42:01.246723"
+}
