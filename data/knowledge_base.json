@@ -1,0 +1,217 @@
+{
+  "cardiac": {
+    "medications": {
+      "importance": "Critical for preventing heart failure recurrence and reducing cardiovascular mortality",
+      "adherence_tips": [
+        "Take medications at the same time each day",
+        "Use a pill organizer to track daily doses",
+        "Set phone alarms as reminders",
+        "Keep medications in a visible location"
+      ],
+      "red_flags": [
+        "Missed doses for more than 2 consecutive days",
+        "Swelling in legs or feet",
+        "Shortness of breath",
+        "Rapid weight gain (>3 lbs in 24 hours)"
+      ],
+      "evidence": "Beta-blockers and ACE inhibitors reduce readmission risk by 30-40% (AHA Guidelines 2023)"
+    },
+    "therapy": {
+      "importance": "Cardiac rehabilitation improves cardiovascular function and reduces 30-day readmissions by 25%",
+      "adherence_tips": [
+        "Start with 5-10 minutes if fatigued",
+        "Walk at a comfortable pace",
+        "Monitor heart rate during activity",
+        "Schedule exercise at the same time daily"
+      ],
+      "red_flags": [
+        "Complete cessation of physical activity",
+        "Chest pain during exercise",
+        "Dizziness or lightheadedness",
+        "Irregular heartbeat"
+      ],
+      "evidence": "Cardiac rehab programs reduce mortality by 26% (Cochrane Review 2021)"
+    },
+    "diet": {
+      "importance": "Low-sodium diet prevents fluid retention and reduces heart failure exacerbations",
+      "adherence_tips": [
+        "Limit sodium to 2000mg per day",
+        "Avoid processed and canned foods",
+        "Use herbs and spices instead of salt",
+        "Read nutrition labels carefully"
+      ],
+      "red_flags": [
+        "Consistent high-sodium food choices",
+        "Fluid retention",
+        "Weight gain"
+      ],
+      "evidence": "Sodium restriction reduces HF hospitalizations by 36% (JAMA 2020)"
+    }
+  },
+  "diabetes": {
+    "medications": {
+      "importance": "Prevents hyperglycemia complications including DKA, neuropathy, and organ damage",
+      "adherence_tips": [
+        "Monitor blood sugar before taking medications",
+        "Store insulin at proper temperature (36-46°F)",
+        "Rotate injection sites to prevent lipohypertrophy",
+        "Keep a medication log with blood sugar readings"
+      ],
+      "red_flags": [
+        "Blood sugar >300 mg/dL",
+        "Blood sugar <70 mg/dL (hypoglycemia)",
+        "Frequent urination and extreme thirst",
+        "Ketones in urine"
+      ],
+      "evidence": "Medication adherence reduces HbA1c by 0.7-1.0% (Diabetes Care 2022)"
+    },
+    "therapy": {
+      "importance": "Regular physical activity improves insulin sensitivity and glucose control",
+      "adherence_tips": [
+        "Aim for 150 minutes of moderate activity per week",
+        "Check blood sugar before and after exercise",
+        "Carry fast-acting carbs during activity",
+        "Wear proper footwear to prevent injuries"
+      ],
+      "red_flags": [
+        "No physical activity for extended periods",
+        "Foot injuries or sores",
+        "Extreme fatigue during activity"
+      ],
+      "evidence": "Exercise reduces HbA1c by 0.6% and improves cardiovascular outcomes (ADA 2023)"
+    },
+    "diet": {
+      "importance": "Carbohydrate management is essential for blood glucose control",
+      "adherence_tips": [
+        "Count carbohydrates at each meal",
+        "Choose low-glycemic index foods",
+        "Eat consistent meal times",
+        "Include fiber-rich vegetables"
+      ],
+      "red_flags": [
+        "Skipping meals regularly",
+        "Consuming high-sugar foods",
+        "Erratic eating patterns"
+      ],
+      "evidence": "Medical nutrition therapy reduces HbA1c by 1-2% (ADA Guidelines 2023)"
+    }
+  },
+  "orthopedic": {
+    "medications": {
+      "importance": "Pain management and anticoagulation prevent complications after surgery",
+      "adherence_tips": [
+        "Take pain medication before pain becomes severe",
+        "Follow prescribed anticoagulation schedule exactly",
+        "Report any unusual bleeding immediately",
+        "Taper medications as directed, do not stop abruptly"
+      ],
+      "red_flags": [
+        "Severe uncontrolled pain",
+        "Unusual bleeding or bruising",
+        "Signs of infection (fever, redness, swelling)",
+        "Blood clot symptoms (leg pain, swelling, warmth)"
+      ],
+      "evidence": "Anticoagulation adherence reduces DVT risk by 60% (Orthopedics 2021)"
+    },
+    "therapy": {
+      "importance": "Physical therapy prevents stiffness and promotes proper healing after orthopedic surgery",
+      "adherence_tips": [
+        "Perform prescribed exercises 2-3 times daily",
+        "Use ice after therapy sessions to reduce inflammation",
+        "Progress gradually, do not rush recovery",
+        "Attend all scheduled PT appointments"
+      ],
+      "red_flags": [
+        "Not performing any prescribed exercises",
+        "Increased joint stiffness or reduced range of motion",
+        "Severe pain during prescribed exercises",
+        "Weight bearing before cleared by surgeon"
+      ],
+      "evidence": "PT adherence improves functional outcomes by 40% (JBJS 2020)"
+    }
+  },
+  "respiratory": {
+    "medications": {
+      "importance": "Inhaler medications and antibiotics prevent COPD exacerbations and pneumonia complications",
+      "adherence_tips": [
+        "Use spacer device with inhalers for better delivery",
+        "Rinse mouth after corticosteroid inhalers",
+        "Complete full antibiotic course even if feeling better",
+        "Track inhaler doses to know when to refill"
+      ],
+      "red_flags": [
+        "Increased shortness of breath",
+        "Worsening cough or sputum production",
+        "Fever or chills",
+        "Confusion or extreme fatigue"
+      ],
+      "evidence": "Inhaler adherence reduces exacerbations by 45% (Thorax 2022)"
+    },
+    "therapy": {
+      "importance": "Pulmonary rehabilitation and breathing exercises improve lung function and quality of life",
+      "adherence_tips": [
+        "Practice pursed-lip breathing throughout the day",
+        "Use incentive spirometer as prescribed",
+        "Perform breathing exercises 3-4 times daily",
+        "Gradually increase walking distance"
+      ],
+      "red_flags": [
+        "Declining exercise tolerance",
+        "Increased oxygen needs",
+        "Morning headaches (CO2 retention)",
+        "Anxiety or panic related to breathing"
+      ],
+      "evidence": "Pulmonary rehab reduces readmissions by 31% (ERJ 2021)"
+    }
+  },
+  "general": {
+    "medications": {
+      "importance": "Medication adherence is the foundation of post-discharge recovery",
+      "adherence_tips": [
+        "Create a daily medication routine",
+        "Understand what each medication is for",
+        "Ask pharmacist about side effects",
+        "Never stop medications without consulting doctor"
+      ],
+      "red_flags": [
+        "Missed doses becoming a pattern",
+        "Confusion about medication purpose",
+        "Difficulty affording medications",
+        "Experiencing side effects"
+      ],
+      "evidence": "Medication adherence reduces all-cause readmissions by 15% (BMJ 2021)"
+    },
+    "therapy": {
+      "importance": "Physical activity promotes healing and prevents deconditioning",
+      "adherence_tips": [
+        "Start slowly and increase gradually",
+        "Listen to your body",
+        "Ask for help when needed",
+        "Celebrate small progress milestones"
+      ],
+      "red_flags": [
+        "Complete inactivity",
+        "Fear of movement",
+        "Worsening weakness",
+        "Depression or isolation"
+      ],
+      "evidence": "Early mobilization reduces LOS and readmissions (Lancet 2020)"
+    },
+    "diet": {
+      "importance": "Proper nutrition supports healing and prevents complications",
+      "adherence_tips": [
+        "Eat balanced meals with protein at each meal",
+        "Stay hydrated (6-8 glasses water daily)",
+        "Avoid alcohol if taking medications",
+        "Plan meals ahead to ensure healthy choices"
+      ],
+      "red_flags": [
+        "Unintentional weight loss",
+        "Poor appetite for multiple days",
+        "Nausea or vomiting",
+        "Dehydration signs"
+      ],
+      "evidence": "Nutritional support reduces complications by 20% (Clinical Nutrition 2022)"
+    }
+  }
+}

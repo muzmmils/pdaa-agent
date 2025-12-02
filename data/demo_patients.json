@@ -1,0 +1,40 @@
+[
+  {
+    "id": "P001",
+    "name": "John Doe",
+    "age": 65,
+    "condition": "Cardiac surgery",
+    "risk": "high",
+    "discharge_plan": {
+      "medications": [
+        "Beta-blocker",
+        "ACE inhibitor"
+      ],
+      "therapy": [
+        "Cardiac rehab 3x/week"
+      ],
+      "diet": [
+        "Low sodium"
+      ]
+    }
+  },
+  {
+    "id": "P002",
+    "name": "Jane Smith",
+    "age": 58,
+    "condition": "Type 2 Diabetes",
+    "risk": "medium",
+    "discharge_plan": {
+      "medications": [
+        "Insulin",
+        "Metformin"
+      ],
+      "therapy": [
+        "Walking 30 min daily"
+      ],
+      "diet": [
+        "Carb counting"
+      ]
+    }
+  }
+]

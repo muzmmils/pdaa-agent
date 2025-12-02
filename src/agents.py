@@ -5,10 +5,11 @@ import os
 from dotenv import load_dotenv
 
 from .memory import MemoryManager
-from . tools import (
+from .tools import (
     IntakeTool, ReminderTool, AlertTool,
     AdherenceScoreTool, RiskStratifierTool, RecommendationEngine
 )
+from .knowledge_base import MedicalKnowledgeBase
 
 load_dotenv()
 
@@ -122,8 +123,9 @@ class AnalyzerAgent(BaseAgent):
     
     def __init__(self, memory_manager: MemoryManager):
         super().__init__("AnalyzerAgent", memory_manager)
-        self. adherence_tool = AdherenceScoreTool()
+        self.adherence_tool = AdherenceScoreTool()
         self.risk_tool = RiskStratifierTool()
+        self.knowledge_base = MedicalKnowledgeBase()  # Initialize RAG system
     
     def analyze(self, patient_data: Dict, monitoring_result: Dict) -> Dict[str, Any]:
         """Perform Chain-of-Thought analysis of patient adherence."""
@@ -150,14 +152,27 @@ class AnalyzerAgent(BaseAgent):
         
         # Risk stratification
         risk_result = self. risk_tool.stratify(patient_data, adherence_history)
-        
         # Chain-of-Thought reasoning
         cot_analysis = self._chain_of_thought_analysis(
             patient_data, score_result, risk_result, monitoring_result
         )
         
+        # RAG-enhanced recommendations for missed tasks
+        missed_tasks = monitoring_result.get("missed_tasks", [])
+        rag_recommendations = {}
+        red_flag_warnings = {}
+        
+        if missed_tasks:
+            for task in missed_tasks:
+                # Get evidence-based recommendation
+                recommendation = self.knowledge_base.get_recommendation(patient_data, task)
+                rag_recommendations[task] = recommendation
+            
+            # Check for red flags
+            red_flag_warnings = self.knowledge_base.check_for_red_flags(patient_data, missed_tasks)
+        
         # Save to long-term memory
-        self. memory_manager.long_term. add_adherence_record(
+        self.memory_manager.long_term.add_adherence_record(
             patient_data["id"],
             monitoring_result["day"],
             score_result["total_score"],
@@ -176,7 +191,9 @@ class AnalyzerAgent(BaseAgent):
             "adherence_score": score_result,
             "risk_assessment": risk_result,
             "chain_of_thought": cot_analysis,
-            "day": monitoring_result["day"]
+            "day": monitoring_result["day"],
+            "rag_recommendations": rag_recommendations,
+            "red_flag_warnings": red_flag_warnings
         }
         
         self.log_action("Analysis complete", {

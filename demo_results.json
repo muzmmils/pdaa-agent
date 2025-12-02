@@ -1,0 +1,1393 @@
+{
+  "simulation_start": "2025-12-02T21:22:49.950660",
+  "total_days": 3,
+  "total_patients": 2,
+  "patient_results": {
+    "P001": {
+      "patient_id": "P001",
+      "patient_name": "John Doe",
+      "daily_results": [
+        {
+          "day": 1,
+          "daily_plan": {
+            "patient_id": "P001",
+            "day": 1,
+            "date": "2025-12-02",
+            "total_tasks": 6,
+            "schedule": [
+              {
+                "id": "T010730",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Breakfast - Low sodium",
+                "time": "07:30",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T010900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Beta-blocker",
+                "time": "09:00",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T010900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take ACE inhibitor",
+                "time": "09:00",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T011030",
+                "category": "therapy",
+                "icon": "[THR]",
+                "priority": "MEDIUM",
+                "description": "Cardiac rehab 3x/week",
+                "time": "10:30",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T011230",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Lunch - Low sodium",
+                "time": "12:30",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T011830",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Dinner - Low sodium",
+                "time": "18:30",
+                "day": 1,
+                "completed": false
+              }
+            ],
+            "summary": {
+              "diet": 3,
+              "medication": 2,
+              "therapy": 1
+            }
+          },
+          "engagement": {
+            "patient_id": "P001",
+            "day": 1,
+            "engagement_level": "low",
+            "completion_rate": 83.3,
+            "completed_tasks": [
+              "T010730",
+              "T010900",
+              "T010900",
+              "T011030",
+              "T011230"
+            ],
+            "missed_tasks": [
+              {
+                "id": "T011830",
+                "category": "diet",
+                "description": "Dinner - Low sodium",
+                "time": "18:30"
+              }
+            ],
+            "medication_taken": true,
+            "therapy_done": true,
+            "diet_followed": false,
+            "tasks_completed": 5,
+            "tasks_total": 6,
+            "adherence_probability": 0.69
+          },
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 1,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Beta-blocker",
+                  "frequency": "as prescribed"
+                },
+                {
+                  "name": "ACE inhibitor",
+                  "frequency": "as prescribed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab 3x/week",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Low sodium"
+              ],
+              "follow_up_date": null,
+              "risk_level": "high",
+              "condition": "Cardiac surgery"
+            },
+            "missed_tasks": [
+              "diet"
+            ],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 5,
+              "tasks_total": 6
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 80.0,
+              "breakdown": {
+                "task_completion": 50.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "HIGH",
+              "risk_score": 5,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+            },
+            "chain_of_thought": "Here's a summary of John Doe's adherence and risk for Day 1:\n\n*   **Adherence Score:** John's adherence score on Day 1 is 80.0 (Grade B). This indicates a good initial effort but with clear room for improvement to reach optimal adherence.\n*   **Missed Task & Impact:** The primary missed task was adherence to his prescribed \"diet.\" Non-adherence to diet can directly impact treatment efficacy, medication effectiveness, and overall health outcomes, especially for conditions sensitive to dietary intake.\n*   **Risk Class & Drivers:** John is currently classified as **HIGH risk**. This is primarily driven by a high baseline risk and a concerning early 'declining' adherence trend, despite his age-related risk being normal.\n*   **Near-Term Recommendation (Diet Support):** Proactively engage with John to understand specific barriers to diet adherence (e.g., understanding, access, motivation). Offer practical support such as tailored meal suggestions, recipes, or educational materials.\n*   **Near-Term Recommendation (Early Intervention):** Given the HIGH risk classification and the identified 'declining' trend on Day 1, implement immediate, personalized interventions to reinforce adherence habits and address underlying high baseline risk factors.\n*   **Near-Term Recommendation (Monitoring):** Emphasize close monitoring of all adherence tasks over the next few days to prevent further declines and reinforce positive behaviors from the outset.\n*   **Next Check Timing:** A follow-up check should be conducted within **24 hours (end of Day 2)** to reassess adherence, address any new concerns, and provide ongoing support given his high-risk status.",
+            "day": 1,
+            "rag_recommendations": {
+              "diet": "**Why it matters:** Low-sodium diet prevents fluid retention and reduces heart failure exacerbations | **Try this:** Limit sodium to 2000mg per day; Avoid processed and canned foods | **Evidence:** Sodium restriction reduces HF hospitalizations by 36% (JAMA 2020)"
+            },
+            "red_flag_warnings": {
+              "diet": [
+                "Consistent high-sodium food choices",
+                "Fluid retention",
+                "Weight gain"
+              ]
+            }
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 1,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_ENCOURAGEMENT",
+                "CONTINUE_STANDARD_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 80.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ENCOURAGEMENT",
+                "message": "Great job staying on track, John Doe! Keep up the good work!"
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 2,
+          "daily_plan": {
+            "patient_id": "P001",
+            "day": 2,
+            "date": "2025-12-03",
+            "total_tasks": 6,
+            "schedule": [
+              {
+                "id": "T020730",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Breakfast - Low sodium",
+                "time": "07:30",
+                "day": 2,
+                "completed": false
+              },
+              {
+                "id": "T020900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Beta-blocker",
+                "time": "09:00",
+                "day": 2,
+                "completed": false
+              },
+              {
+                "id": "T020900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take ACE inhibitor",
+                "time": "09:00",
+                "day": 2,
+                "completed": true
+              },
+              {
+                "id": "T021030",
+                "category": "therapy",
+                "icon": "[THR]",
+                "priority": "MEDIUM",
+                "description": "Cardiac rehab 3x/week",
+                "time": "10:30",
+                "day": 2,
+                "completed": false
+              },
+              {
+                "id": "T021230",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Lunch - Low sodium",
+                "time": "12:30",
+                "day": 2,
+                "completed": true
+              },
+              {
+                "id": "T021830",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Dinner - Low sodium",
+                "time": "18:30",
+                "day": 2,
+                "completed": false
+              }
+            ],
+            "summary": {
+              "diet": 3,
+              "medication": 2,
+              "therapy": 1
+            }
+          },
+          "engagement": {
+            "patient_id": "P001",
+            "day": 2,
+            "engagement_level": "low",
+            "completion_rate": 33.3,
+            "completed_tasks": [
+              "T020900",
+              "T021230"
+            ],
+            "missed_tasks": [
+              {
+                "id": "T020730",
+                "category": "diet",
+                "description": "Breakfast - Low sodium",
+                "time": "07:30"
+              },
+              {
+                "id": "T020900",
+                "category": "medication",
+                "description": "Take Beta-blocker",
+                "time": "09:00"
+              },
+              {
+                "id": "T021030",
+                "category": "therapy",
+                "description": "Cardiac rehab 3x/week",
+                "time": "10:30"
+              },
+              {
+                "id": "T021830",
+                "category": "diet",
+                "description": "Dinner - Low sodium",
+                "time": "18:30"
+              }
+            ],
+            "medication_taken": false,
+            "therapy_done": false,
+            "diet_followed": false,
+            "tasks_completed": 2,
+            "tasks_total": 6,
+            "adherence_probability": 0.23
+          },
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 2,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Beta-blocker",
+                  "frequency": "as prescribed"
+                },
+                {
+                  "name": "ACE inhibitor",
+                  "frequency": "as prescribed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab 3x/week",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Low sodium"
+              ],
+              "follow_up_date": null,
+              "risk_level": "high",
+              "condition": "Cardiac surgery"
+            },
+            "missed_tasks": [
+              "medication",
+              "therapy",
+              "diet"
+            ],
+            "reminders_generated": [
+              "[MED] Reminder: Time to take your Beta-blocker.  as prescribed.",
+              "[MED] Reminder: Time to take your ACE inhibitor.  as prescribed.",
+              "[THERAPY] Reminder: Don't forget your Cardiac rehab 3x/week today! "
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": false,
+              "diet_followed": false,
+              "tasks_completed": 2,
+              "tasks_total": 6
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 20.0,
+              "breakdown": {
+                "task_completion": 20.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 0,
+                "diet_adherence": 0
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "HIGH",
+              "risk_score": 5,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+            },
+            "chain_of_thought": "Here's a summary of John Doe's adherence and risk:\n\n*   **Adherence Score:** John's adherence score for Day 2 is 20.0 (Grade F), indicating critically low adherence and significant non-compliance early in his program.\n*   **Missed Tasks & Impact:** He missed all reported tasks: medication, therapy, and diet. This widespread non-adherence can severely impede treatment efficacy, hinder progress in therapy, and negatively impact his overall health and condition management.\n*   **Risk Class & Drivers:** John is classified as HIGH risk. Key drivers include a pre-existing 'high base risk' and a 'declining adherence trend,' which is clearly evident from his very low score on Day 2. His age is not identified as a specific risk factor.\n*   **Urgent Outreach:** Initiate immediate direct outreach to John (e.g., phone call) to understand the barriers contributing to non-adherence across multiple crucial tasks.\n*   **Barrier Identification & Support:** Focus the outreach on identifying specific challenges (e.g., understanding of regimen, motivation, practical logistical issues, side effects) and offer tailored support or resources.\n*   **Clinical Review Consideration:** Given the pervasive non-adherence and high-risk status, flag this patient for a clinical review to determine if a change in care plan or additional clinical intervention is warranted.\n*   **Next Check Timing:** Schedule a follow-up check-in for tomorrow (Day 3) to monitor adherence closely and reassess his support needs.",
+            "day": 2,
+            "rag_recommendations": {
+              "medication": "**Why it matters:** Critical for preventing heart failure recurrence and reducing cardiovascular mortality | **Try this:** Take medications at the same time each day; Use a pill organizer to track daily doses | **Evidence:** Beta-blockers and ACE inhibitors reduce readmission risk by 30-40% (AHA Guidelines 2023)",
+              "therapy": "**Why it matters:** Cardiac rehabilitation improves cardiovascular function and reduces 30-day readmissions by 25% | **Try this:** Start with 5-10 minutes if fatigued; Walk at a comfortable pace | **Evidence:** Cardiac rehab programs reduce mortality by 26% (Cochrane Review 2021)",
+              "diet": "**Why it matters:** Low-sodium diet prevents fluid retention and reduces heart failure exacerbations | **Try this:** Limit sodium to 2000mg per day; Avoid processed and canned foods | **Evidence:** Sodium restriction reduces HF hospitalizations by 36% (JAMA 2020)"
+            },
+            "red_flag_warnings": {
+              "therapy": [
+                "Complete cessation of physical activity",
+                "Chest pain during exercise",
+                "Dizziness or lightheadedness",
+                "Irregular heartbeat"
+              ],
+              "diet": [
+                "Consistent high-sodium food choices",
+                "Fluid retention",
+                "Weight gain"
+              ]
+            }
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 2,
+            "recommendation": {
+              "priority": "URGENT",
+              "actions": [
+                "ESCALATE_TO_CARE_TEAM",
+                "SCHEDULE_PHONE_CALL"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 20.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "2 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ESCALATE",
+                "alert": {
+                  "alert_id": "ALT-0001",
+                  "patient_id": "P001",
+                  "type": "CARE_TEAM_ESCALATION",
+                  "severity": "HIGH",
+                  "message": "Patient John Doe requires immediate attention.  Adherence score: 20.0, Risk: HIGH",
+                  "details": {
+                    "adherence_score": 20.0,
+                    "risk_class": "HIGH",
+                    "day": 2
+                  },
+                  "timestamp": "2025-12-02T21:23:06.695818",
+                  "status": "TRIGGERED"
+                }
+              }
+            ],
+            "escalated": true
+          }
+        },
+        {
+          "day": 3,
+          "daily_plan": {
+            "patient_id": "P001",
+            "day": 3,
+            "date": "2025-12-04",
+            "total_tasks": 6,
+            "schedule": [
+              {
+                "id": "T030730",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Breakfast - Low sodium",
+                "time": "07:30",
+                "day": 3,
+                "completed": false
+              },
+              {
+                "id": "T030900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Beta-blocker",
+                "time": "09:00",
+                "day": 3,
+                "completed": true
+              },
+              {
+                "id": "T030900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take ACE inhibitor",
+                "time": "09:00",
+                "day": 3,
+                "completed": true
+              },
+              {
+                "id": "T031030",
+                "category": "therapy",
+                "icon": "[THR]",
+                "priority": "MEDIUM",
+                "description": "Cardiac rehab 3x/week",
+                "time": "10:30",
+                "day": 3,
+                "completed": false
+              },
+              {
+                "id": "T031230",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Lunch - Low sodium",
+                "time": "12:30",
+                "day": 3,
+                "completed": false
+              },
+              {
+                "id": "T031830",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Dinner - Low sodium",
+                "time": "18:30",
+                "day": 3,
+                "completed": false
+              }
+            ],
+            "summary": {
+              "diet": 3,
+              "medication": 2,
+              "therapy": 1
+            }
+          },
+          "engagement": {
+            "patient_id": "P001",
+            "day": 3,
+            "engagement_level": "low",
+            "completion_rate": 33.3,
+            "completed_tasks": [
+              "T030900",
+              "T030900"
+            ],
+            "missed_tasks": [
+              {
+                "id": "T030730",
+                "category": "diet",
+                "description": "Breakfast - Low sodium",
+                "time": "07:30"
+              },
+              {
+                "id": "T031030",
+                "category": "therapy",
+                "description": "Cardiac rehab 3x/week",
+                "time": "10:30"
+              },
+              {
+                "id": "T031230",
+                "category": "diet",
+                "description": "Lunch - Low sodium",
+                "time": "12:30"
+              },
+              {
+                "id": "T031830",
+                "category": "diet",
+                "description": "Dinner - Low sodium",
+                "time": "18:30"
+              }
+            ],
+            "medication_taken": true,
+            "therapy_done": false,
+            "diet_followed": false,
+            "tasks_completed": 2,
+            "tasks_total": 6,
+            "adherence_probability": 0.34
+          },
+          "monitoring": {
+            "patient_id": "P001",
+            "day": 3,
+            "plan": {
+              "patient_id": "P001",
+              "patient_name": "John Doe",
+              "medications": [
+                {
+                  "name": "Beta-blocker",
+                  "frequency": "as prescribed"
+                },
+                {
+                  "name": "ACE inhibitor",
+                  "frequency": "as prescribed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Cardiac rehab 3x/week",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Low sodium"
+              ],
+              "follow_up_date": null,
+              "risk_level": "high",
+              "condition": "Cardiac surgery"
+            },
+            "missed_tasks": [
+              "therapy",
+              "diet"
+            ],
+            "reminders_generated": [
+              "[THERAPY] Reminder: Don't forget your Cardiac rehab 3x/week today! "
+            ],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": false,
+              "diet_followed": false,
+              "tasks_completed": 2,
+              "tasks_total": 6
+            }
+          },
+          "analysis": {
+            "patient_id": "P001",
+            "adherence_score": {
+              "total_score": 35.0,
+              "breakdown": {
+                "task_completion": 20.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 0,
+                "diet_adherence": 0
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "HIGH",
+              "risk_score": 5,
+              "factors": {
+                "base_risk": "high",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Immediate intervention recommended.  Consider care team escalation."
+            },
+            "chain_of_thought": "Here is a summary of John Doe's adherence and risk for Day 3:\n\n*   **Adherence Score:** John's adherence score is 35.0 (grade F), indicating critically poor engagement with his care plan today. This is a significant concern.\n*   **Missed Tasks:** He missed two key tasks: his scheduled **therapy** and **diet** adherence.\n*   **Likely Impact:** Missing therapy can directly hinder progress and potentially worsen symptoms or delay recovery. Non-adherence to diet can affect overall health, energy levels, and the efficacy of other treatments.\n*   **Risk Class:** John is currently classified as **HIGH risk**.\n*   **Risk Drivers:** This high-risk status is primarily driven by an existing \"high base risk\" combined with a concerning \"declining adherence trend.\" His age risk is normal, but these other factors elevate his overall risk significantly.\n*   **Near-Term Recommendation (Immediate Outreach):** Immediate outreach to John is crucial to understand the specific barriers he is facing and offer immediate support or problem-solving.\n*   **Near-Term Recommendation (Care Plan Review):** Review his current care plan for potential modifications, simplification, or additional resources (e.g., enhanced reminders, educational materials, alternative therapy delivery, nutritional support).\n*   **Next Check Timing:** A follow-up check should be scheduled within the next **24 hours** to assess his situation, address identified barriers, and monitor for any improvement.",
+            "day": 3,
+            "rag_recommendations": {
+              "therapy": "**Why it matters:** Cardiac rehabilitation improves cardiovascular function and reduces 30-day readmissions by 25% | **Try this:** Start with 5-10 minutes if fatigued; Walk at a comfortable pace | **Evidence:** Cardiac rehab programs reduce mortality by 26% (Cochrane Review 2021)",
+              "diet": "**Why it matters:** Low-sodium diet prevents fluid retention and reduces heart failure exacerbations | **Try this:** Limit sodium to 2000mg per day; Avoid processed and canned foods | **Evidence:** Sodium restriction reduces HF hospitalizations by 36% (JAMA 2020)"
+            },
+            "red_flag_warnings": {
+              "therapy": [
+                "Complete cessation of physical activity",
+                "Chest pain during exercise",
+                "Dizziness or lightheadedness",
+                "Irregular heartbeat"
+              ],
+              "diet": [
+                "Consistent high-sodium food choices",
+                "Fluid retention",
+                "Weight gain"
+              ]
+            }
+          },
+          "escalation": {
+            "patient_id": "P001",
+            "day": 3,
+            "recommendation": {
+              "priority": "URGENT",
+              "actions": [
+                "ESCALATE_TO_CARE_TEAM",
+                "SCHEDULE_PHONE_CALL"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: HIGH\n        2. Current adherence score: 35.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "2 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "ESCALATE",
+                "alert": {
+                  "alert_id": "ALT-0002",
+                  "patient_id": "P001",
+                  "type": "CARE_TEAM_ESCALATION",
+                  "severity": "HIGH",
+                  "message": "Patient John Doe requires immediate attention.  Adherence score: 35.0, Risk: HIGH",
+                  "details": {
+                    "adherence_score": 35.0,
+                    "risk_class": "HIGH",
+                    "day": 3
+                  },
+                  "timestamp": "2025-12-02T21:23:12.093935",
+                  "status": "TRIGGERED"
+                }
+              }
+            ],
+            "escalated": true
+          }
+        }
+      ],
+      "average_score": 45.0,
+      "min_score": 20.0,
+      "max_score": 80.0,
+      "total_escalations": 2,
+      "final_risk": "HIGH",
+      "engagement_insights": {
+        "average_completion": 50.0,
+        "trend": "declining",
+        "consistency": 50.0,
+        "days_tracked": 3,
+        "most_missed_category": "diet"
+      }
+    },
+    "P002": {
+      "patient_id": "P002",
+      "patient_name": "Jane Smith",
+      "daily_results": [
+        {
+          "day": 1,
+          "daily_plan": {
+            "patient_id": "P002",
+            "day": 1,
+            "date": "2025-12-02",
+            "total_tasks": 6,
+            "schedule": [
+              {
+                "id": "T010730",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Breakfast - Carb counting",
+                "time": "07:30",
+                "day": 1,
+                "completed": false
+              },
+              {
+                "id": "T010900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Insulin",
+                "time": "09:00",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T010900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Metformin",
+                "time": "09:00",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T011030",
+                "category": "therapy",
+                "icon": "[THR]",
+                "priority": "MEDIUM",
+                "description": "Walking 30 min daily",
+                "time": "10:30",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T011230",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Lunch - Carb counting",
+                "time": "12:30",
+                "day": 1,
+                "completed": true
+              },
+              {
+                "id": "T011830",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Dinner - Carb counting",
+                "time": "18:30",
+                "day": 1,
+                "completed": false
+              }
+            ],
+            "summary": {
+              "diet": 3,
+              "medication": 2,
+              "therapy": 1
+            }
+          },
+          "engagement": {
+            "patient_id": "P002",
+            "day": 1,
+            "engagement_level": "medium",
+            "completion_rate": 66.7,
+            "completed_tasks": [
+              "T010900",
+              "T010900",
+              "T011030",
+              "T011230"
+            ],
+            "missed_tasks": [
+              {
+                "id": "T010730",
+                "category": "diet",
+                "description": "Breakfast - Carb counting",
+                "time": "07:30"
+              },
+              {
+                "id": "T011830",
+                "category": "diet",
+                "description": "Dinner - Carb counting",
+                "time": "18:30"
+              }
+            ],
+            "medication_taken": true,
+            "therapy_done": true,
+            "diet_followed": false,
+            "tasks_completed": 4,
+            "tasks_total": 6,
+            "adherence_probability": 0.77
+          },
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 1,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Insulin",
+                  "frequency": "as prescribed"
+                },
+                {
+                  "name": "Metformin",
+                  "frequency": "as prescribed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Walking 30 min daily",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Carb counting"
+              ],
+              "follow_up_date": null,
+              "risk_level": "medium",
+              "condition": "Type 2 Diabetes"
+            },
+            "missed_tasks": [
+              "diet"
+            ],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 4,
+              "tasks_total": 6
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 70.0,
+              "breakdown": {
+                "task_completion": 40.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "C"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "Here's a summary of Jane Smith's adherence and risk for Day 1:\n\n*   **Adherence Score:** Jane scored 70.0 (Grade C), indicating moderate adherence. This suggests she is largely compliant but has specific areas needing attention and support to reach optimal adherence.\n*   **Missed Tasks:** The 'diet' task was missed today. This likely impacts the efficacy of any dietary interventions, potentially affecting health outcomes such as weight management, glycemic control, or cardiovascular health.\n*   **Risk Class:** Jane is currently categorized as LOW risk. This is a positive indicator, driven by a stable adherence trend and normal age risk.\n*   **Risk Drivers:** While the overall risk is low, it's important to note the underlying 'medium base risk.' This suggests inherent factors that could contribute to higher risk if not managed, making close monitoring crucial even with current low-risk status.\n*   **Near-Term Recommendation 1:** Proactively reach out to Jane to understand the specific barriers to diet adherence (e.g., understanding, access, motivation, practical challenges).\n*   **Near-Term Recommendation 2:** Provide targeted support for diet compliance, such as simplified meal planning resources, reminder strategies, or options for alternative healthy food choices if current recommendations are challenging.\n*   **Near-Term Recommendation 3:** Reiterate the importance of consistent diet adherence and its direct link to her health goals and treatment plan.\n*   **Next Check Timing:** Monitor adherence daily to quickly identify any emerging patterns of non-adherence and provide timely intervention, especially concerning diet.",
+            "day": 1,
+            "rag_recommendations": {
+              "diet": "**Why it matters:** Carbohydrate management is essential for blood glucose control | **Try this:** Count carbohydrates at each meal; Choose low-glycemic index foods | **Evidence:** Medical nutrition therapy reduces HbA1c by 1-2% (ADA Guidelines 2023)"
+            },
+            "red_flag_warnings": {
+              "diet": [
+                "Skipping meals regularly",
+                "Consuming high-sugar foods",
+                "Erratic eating patterns"
+              ]
+            }
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 1,
+            "recommendation": {
+              "priority": "NORMAL",
+              "actions": [
+                "SEND_GENTLE_REMINDER",
+                "CONTINUE_MONITORING"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 70.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "24 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "GENTLE_REMINDER",
+                "message": "Hi Jane Smith! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 2,
+          "daily_plan": {
+            "patient_id": "P002",
+            "day": 2,
+            "date": "2025-12-03",
+            "total_tasks": 6,
+            "schedule": [
+              {
+                "id": "T020730",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Breakfast - Carb counting",
+                "time": "07:30",
+                "day": 2,
+                "completed": true
+              },
+              {
+                "id": "T020900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Insulin",
+                "time": "09:00",
+                "day": 2,
+                "completed": true
+              },
+              {
+                "id": "T020900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Metformin",
+                "time": "09:00",
+                "day": 2,
+                "completed": false
+              },
+              {
+                "id": "T021030",
+                "category": "therapy",
+                "icon": "[THR]",
+                "priority": "MEDIUM",
+                "description": "Walking 30 min daily",
+                "time": "10:30",
+                "day": 2,
+                "completed": true
+              },
+              {
+                "id": "T021230",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Lunch - Carb counting",
+                "time": "12:30",
+                "day": 2,
+                "completed": false
+              },
+              {
+                "id": "T021830",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Dinner - Carb counting",
+                "time": "18:30",
+                "day": 2,
+                "completed": false
+              }
+            ],
+            "summary": {
+              "diet": 3,
+              "medication": 2,
+              "therapy": 1
+            }
+          },
+          "engagement": {
+            "patient_id": "P002",
+            "day": 2,
+            "engagement_level": "medium",
+            "completion_rate": 50.0,
+            "completed_tasks": [
+              "T020730",
+              "T020900",
+              "T021030"
+            ],
+            "missed_tasks": [
+              {
+                "id": "T020900",
+                "category": "medication",
+                "description": "Take Metformin",
+                "time": "09:00"
+              },
+              {
+                "id": "T021230",
+                "category": "diet",
+                "description": "Lunch - Carb counting",
+                "time": "12:30"
+              },
+              {
+                "id": "T021830",
+                "category": "diet",
+                "description": "Dinner - Carb counting",
+                "time": "18:30"
+              }
+            ],
+            "medication_taken": false,
+            "therapy_done": true,
+            "diet_followed": false,
+            "tasks_completed": 3,
+            "tasks_total": 6,
+            "adherence_probability": 0.6
+          },
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 2,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Insulin",
+                  "frequency": "as prescribed"
+                },
+                {
+                  "name": "Metformin",
+                  "frequency": "as prescribed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Walking 30 min daily",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Carb counting"
+              ],
+              "follow_up_date": null,
+              "risk_level": "medium",
+              "condition": "Type 2 Diabetes"
+            },
+            "missed_tasks": [
+              "medication",
+              "diet"
+            ],
+            "reminders_generated": [
+              "[MED] Reminder: Time to take your Insulin.  as prescribed.",
+              "[MED] Reminder: Time to take your Metformin.  as prescribed."
+            ],
+            "adherence_data": {
+              "medication_taken": false,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 3,
+              "tasks_total": 6
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 45.0,
+              "breakdown": {
+                "task_completion": 30.0,
+                "medication_adherence": 0,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "F"
+            },
+            "risk_assessment": {
+              "risk_class": "LOW",
+              "risk_score": 2,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "stable",
+                "age_risk": "normal"
+              },
+              "recommendation": "Continue standard monitoring protocol."
+            },
+            "chain_of_thought": "Here is a summary of Jane Smith's adherence and risk profile for Day 2:\n\n*   **Adherence Score:** Jane's adherence score for Day 2 is 45.0 (Grade F), indicating very poor compliance with her prescribed care plan today.\n*   **Missed Tasks & Impact:** She missed both her scheduled medication and diet tasks. This non-adherence can directly impede therapeutic efficacy, delay progress towards health goals, and potentially worsen her condition.\n*   **Risk Classification:** Despite today's poor adherence, Jane is currently categorized as LOW risk. This classification is primarily driven by a stable overall adherence trend and normal age-related risk, although her underlying base risk is assessed as medium.\n*   **Immediate Recommendation (Engagement):** Promptly contact Jane today to understand the specific barriers encountered that led to missing both her medication and diet tasks.\n*   **Immediate Recommendation (Support & Solutions):** Collaboratively explore practical solutions to improve adherence, such as setting up automated reminders for medication and meals, or discussing strategies for simpler meal preparation.\n*   **Immediate Recommendation (Education):** Reinforce the critical importance of consistent medication intake and dietary adherence, clearly outlining their direct impact on her health and treatment outcomes.\n*   **Next Check Timing:** Schedule a follow-up adherence check for tomorrow (Day 3) to monitor implementation of these recommendations and assess any improvement in her compliance.",
+            "day": 2,
+            "rag_recommendations": {
+              "medication": "**Why it matters:** Prevents hyperglycemia complications including DKA, neuropathy, and organ damage | **Try this:** Monitor blood sugar before taking medications; Store insulin at proper temperature (36-46\u00c2\u00b0F) | **Evidence:** Medication adherence reduces HbA1c by 0.7-1.0% (Diabetes Care 2022)",
+              "diet": "**Why it matters:** Carbohydrate management is essential for blood glucose control | **Try this:** Count carbohydrates at each meal; Choose low-glycemic index foods | **Evidence:** Medical nutrition therapy reduces HbA1c by 1-2% (ADA Guidelines 2023)"
+            },
+            "red_flag_warnings": {
+              "diet": [
+                "Skipping meals regularly",
+                "Consuming high-sugar foods",
+                "Erratic eating patterns"
+              ]
+            }
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 2,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: LOW\n        2. Current adherence score: 45.0/100\n        3. Score threshold analysis: BELOW acceptable range\n        4. Conclusion: Intervention needed",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "Hi Jane Smith! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        },
+        {
+          "day": 3,
+          "daily_plan": {
+            "patient_id": "P002",
+            "day": 3,
+            "date": "2025-12-04",
+            "total_tasks": 6,
+            "schedule": [
+              {
+                "id": "T030730",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Breakfast - Carb counting",
+                "time": "07:30",
+                "day": 3,
+                "completed": true
+              },
+              {
+                "id": "T030900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Insulin",
+                "time": "09:00",
+                "day": 3,
+                "completed": true
+              },
+              {
+                "id": "T030900",
+                "category": "medication",
+                "icon": "[MED]",
+                "priority": "HIGH",
+                "description": "Take Metformin",
+                "time": "09:00",
+                "day": 3,
+                "completed": true
+              },
+              {
+                "id": "T031030",
+                "category": "therapy",
+                "icon": "[THR]",
+                "priority": "MEDIUM",
+                "description": "Walking 30 min daily",
+                "time": "10:30",
+                "day": 3,
+                "completed": true
+              },
+              {
+                "id": "T031230",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Lunch - Carb counting",
+                "time": "12:30",
+                "day": 3,
+                "completed": false
+              },
+              {
+                "id": "T031830",
+                "category": "diet",
+                "icon": "[DIET]",
+                "priority": "MEDIUM",
+                "description": "Dinner - Carb counting",
+                "time": "18:30",
+                "day": 3,
+                "completed": true
+              }
+            ],
+            "summary": {
+              "diet": 3,
+              "medication": 2,
+              "therapy": 1
+            }
+          },
+          "engagement": {
+            "patient_id": "P002",
+            "day": 3,
+            "engagement_level": "medium",
+            "completion_rate": 83.3,
+            "completed_tasks": [
+              "T030730",
+              "T030900",
+              "T030900",
+              "T031030",
+              "T031830"
+            ],
+            "missed_tasks": [
+              {
+                "id": "T031230",
+                "category": "diet",
+                "description": "Lunch - Carb counting",
+                "time": "12:30"
+              }
+            ],
+            "medication_taken": true,
+            "therapy_done": true,
+            "diet_followed": false,
+            "tasks_completed": 5,
+            "tasks_total": 6,
+            "adherence_probability": 0.79
+          },
+          "monitoring": {
+            "patient_id": "P002",
+            "day": 3,
+            "plan": {
+              "patient_id": "P002",
+              "patient_name": "Jane Smith",
+              "medications": [
+                {
+                  "name": "Insulin",
+                  "frequency": "as prescribed"
+                },
+                {
+                  "name": "Metformin",
+                  "frequency": "as prescribed"
+                }
+              ],
+              "therapy": [
+                {
+                  "activity": "Walking 30 min daily",
+                  "frequency": "as recommended"
+                }
+              ],
+              "diet": [
+                "Carb counting"
+              ],
+              "follow_up_date": null,
+              "risk_level": "medium",
+              "condition": "Type 2 Diabetes"
+            },
+            "missed_tasks": [
+              "diet"
+            ],
+            "reminders_generated": [],
+            "adherence_data": {
+              "medication_taken": true,
+              "therapy_done": true,
+              "diet_followed": false,
+              "tasks_completed": 5,
+              "tasks_total": 6
+            }
+          },
+          "analysis": {
+            "patient_id": "P002",
+            "adherence_score": {
+              "total_score": 80.0,
+              "breakdown": {
+                "task_completion": 50.0,
+                "medication_adherence": 15,
+                "therapy_adherence": 15,
+                "diet_adherence": 0
+              },
+              "grade": "B"
+            },
+            "risk_assessment": {
+              "risk_class": "MEDIUM",
+              "risk_score": 3,
+              "factors": {
+                "base_risk": "medium",
+                "adherence_trend": "declining",
+                "age_risk": "normal"
+              },
+              "recommendation": "Increased monitoring advised. Send additional reminders."
+            },
+            "chain_of_thought": "Here is Jane Smith's adherence summary for Day 3:\n\n*   **Adherence Score & Interpretation:** Jane's adherence score for Day 3 is 80.0 (Grade B). While this indicates generally good compliance, it represents a concerning declining trend from previous days.\n*   **Missed Tasks & Likely Impact:** The critical missed task for today was \"diet.\" Non-adherence to dietary guidelines can directly impact treatment efficacy, disease progression, and overall health outcomes, especially if the diet is therapeutically prescribed.\n*   **Risk Class & Drivers:** Jane is currently classified as MEDIUM risk. This classification is driven by her inherent medium baseline risk and, significantly, a clear declining adherence trend that requires proactive intervention.\n*   **Actionable Insight - Diet Support:** Investigate the specific barriers Jane faced with her diet today (e.g., lack of suitable food, forgetting, difficulty planning). Offer immediate, practical support like simplified meal ideas or quick access to diet resources.\n*   **Actionable Insight - Trend Intervention:** Proactively reach out to Jane to understand the underlying reasons for the declining adherence trend, even though her overall score is still moderate. Early identification of issues can prevent further drops.\n*   **Near-Term Recommendation:** Reinforce the importance of consistent dietary adherence, explaining the direct link to her health goals. Explore if she needs modifications to her current diet plan to make it more achievable.\n*   **Next Check Timing:** Schedule a brief check-in with Jane within the next 24-48 hours to monitor her progress, particularly her dietary adherence, and address any further challenges stemming from the observed declining trend.",
+            "day": 3,
+            "rag_recommendations": {
+              "diet": "**Why it matters:** Carbohydrate management is essential for blood glucose control | **Try this:** Count carbohydrates at each meal; Choose low-glycemic index foods | **Evidence:** Medical nutrition therapy reduces HbA1c by 1-2% (ADA Guidelines 2023)"
+            },
+            "red_flag_warnings": {
+              "diet": [
+                "Skipping meals regularly",
+                "Consuming high-sugar foods",
+                "Erratic eating patterns"
+              ]
+            }
+          },
+          "escalation": {
+            "patient_id": "P002",
+            "day": 3,
+            "recommendation": {
+              "priority": "HIGH",
+              "actions": [
+                "SEND_PERSONALIZED_REMINDER",
+                "INCREASE_CHECK_IN_FREQUENCY"
+              ],
+              "reasoning": "Analysis:\n        1. Patient risk classification: MEDIUM\n        2. Current adherence score: 80.0/100\n        3. Score threshold analysis: ABOVE acceptable range\n        4. Conclusion: Continue monitoring",
+              "next_check": "6 hours"
+            },
+            "actions_taken": [
+              {
+                "action": "REMINDER",
+                "message": "Hi Jane Smith! Just checking in on your recovery. How are you feeling today? "
+              }
+            ],
+            "escalated": false
+          }
+        }
+      ],
+      "average_score": 65.0,
+      "min_score": 45.0,
+      "max_score": 80.0,
+      "total_escalations": 0,
+      "final_risk": "MEDIUM",
+      "engagement_insights": {
+        "average_completion": 66.7,
+        "trend": "improving",
+        "consistency": 66.7,
+        "days_tracked": 3,
+        "most_missed_category": "diet"
+      }
+    }
+  },
+  "summary": {
+    "total_patients": 2,
+    "total_escalations": 2,
+    "overall_average_score": 55.0,
+    "average_completion_rate": 58.35,
+    "high_risk_patients": [
+      "John Doe"
+    ],
+    "patients_needing_attention": 1
+  },
+  "simulation_end": "2025-12-02T21:23:35.763765",
+  "clinical_impact": {
+    "population_impact": {
+      "patients_monitored": 2,
+      "avg_adherence_score": 55.0,
+      "adherence_improvement_over_baseline": 0,
+      "baseline_readmissions_expected": 0.4,
+      "readmissions_prevented": 0.0,
+      "readmission_reduction_rate": "0.0%",
+      "cost_savings_gross": "$0",
+      "monitoring_costs": "$100",
+      "cost_savings_net": "$-100",
+      "roi": "0.0x",
+      "hospital_bed_days_saved": 0.0,
+      "estimated_lives_saved": 0.0,
+      "evidence_quality": "High (Level 1 evidence from RCTs and meta-analyses)",
+      "citations": [
+        "CMS 30-Day Hospital Readmission Reduction Program (2024)",
+        "NEJM: Impact of Medication Adherence on Readmissions (2019)",
+        "AHA Heart Failure Guidelines: Adherence Interventions (2023)",
+        "Cochrane Review: Post-Discharge Care Coordination (2021)",
+        "JAMA: Cost-Effectiveness of Digital Health Monitoring (2022)"
+      ],
+      "methodology": "Evidence-based calculation using peer-reviewed clinical outcomes data"
+    },
+    "patient_specific_impacts": {
+      "P001": {
+        "patient_risk_level": "HIGH",
+        "avg_adherence_score": 45.0,
+        "baseline_readmission_risk": "30.0%",
+        "risk_reduction_achieved": "0.0%",
+        "current_readmission_risk": "30.0%",
+        "potential_cost_savings": "$0",
+        "intervention_effectiveness": "Moderate"
+      },
+      "P002": {
+        "patient_risk_level": "MEDIUM",
+        "avg_adherence_score": 65.0,
+        "baseline_readmission_risk": "20.0%",
+        "risk_reduction_achieved": "1.2%",
+        "current_readmission_risk": "18.8%",
+        "potential_cost_savings": "$180",
+        "intervention_effectiveness": "Moderate"
+      }
+    }
+  }
+}

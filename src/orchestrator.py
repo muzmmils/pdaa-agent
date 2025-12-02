@@ -4,8 +4,9 @@ from typing import Dict, List, Any
 from pathlib import Path
 
 from .memory import MemoryManager
-from . tools import AdherenceScoreTool, DailyPlannerTool, PatientEngagementSimulator, EscalationLogger
+from .tools import AdherenceScoreTool, DailyPlannerTool, PatientEngagementSimulator, EscalationLogger
 from .agents import MonitorAgent, AnalyzerAgent, EscalatorAgent
+from .impact_calculator import ClinicalImpactCalculator
 
 
 class PDAAOrchestrator:
@@ -22,6 +23,9 @@ class PDAAOrchestrator:
         self.monitor_agent = MonitorAgent(self.memory_manager, use_nlp=use_nlp)
         self.analyzer_agent = AnalyzerAgent(self.memory_manager)
         self.escalator_agent = EscalatorAgent(self.memory_manager, self.escalation_logger, use_nlp=use_nlp)
+        
+        # Initialize impact calculator
+        self.impact_calculator = ClinicalImpactCalculator()
         
         print(f"[Orchestrator] Initialized with NLP mode: {'ENABLED' if use_nlp else 'DISABLED'}")
         
@@ -58,7 +62,7 @@ class PDAAOrchestrator:
             print(f"\n{'='*50}")
             print(f"Patient: {patient['name']} (ID: {patient_id})")
             print(f"   Condition: {patient['condition']}")
-            print(f"   Initial Risk: {patient['risk']. upper()}")
+            print(f"   Initial Risk: {patient['risk'].upper()}")
             print(f"{'='*50}")
             
             patient_results = self._run_patient_simulation(patient, days)
@@ -66,13 +70,19 @@ class PDAAOrchestrator:
         
         # Generate summary
         results["summary"] = self._generate_summary(results["patient_results"])
-        results["simulation_end"] = datetime. now().isoformat()
+        results["simulation_end"] = datetime.now().isoformat()
+        
+        # Calculate clinical impact metrics
+        results["clinical_impact"] = self._calculate_clinical_impact(results["patient_results"])
         
         # Print final summary
         self._print_summary(results["summary"])
         
         # Generate and print escalation summary
         self._print_escalation_summary()
+        
+        # Print clinical impact
+        self._print_clinical_impact(results["clinical_impact"])
         
         return results
     
@@ -130,7 +140,7 @@ class PDAAOrchestrator:
             })
             
             # Log
-            self. simulation_logs.append({
+            self.simulation_logs.append({
                 "patient_id": patient["id"],
                 "day": day,
                 "timestamp": datetime.now().isoformat(),
@@ -197,15 +207,6 @@ class PDAAOrchestrator:
         print("=" * 60)
         print(f"Total Patients Monitored: {summary['total_patients']}")
         print(f"Total Escalations Triggered: {summary['total_escalations']}")
-        print(f"Overall Average Adherence: {summary['overall_average_score']:.1f}/100")
-        print(f"Average Task Completion: {summary.get('average_completion_rate', 0):.1f}%")
-        print(f"High-Risk Patients: {summary['patients_needing_attention']}")
-        
-        if summary['high_risk_patients']:
-            print(f"   Names: {', '.join(summary['high_risk_patients'])}")
-        
-        print("=" * 60)
-    
     def _print_escalation_summary(self):
         """Print escalation logs summary."""
         summary = self.escalation_logger.generate_summary()
@@ -228,6 +229,71 @@ class PDAAOrchestrator:
             for action_type, count in summary['by_action_type'].items():
                 print(f"  {action_type}: {count}")
         
+        print("=" * 60)
+    
+    def _calculate_clinical_impact(self, patient_results: Dict) -> Dict[str, Any]:
+        """Calculate clinical impact metrics using evidence-based calculator."""
+        
+        # Calculate average adherence across all patients and days
+        all_scores = []
+        for result in patient_results.values():
+            for daily in result["daily_results"]:
+                all_scores.append(daily["analysis"]["adherence_score"]["total_score"])
+        
+        avg_adherence = sum(all_scores) / len(all_scores) if all_scores else 0
+        total_patients = len(patient_results)
+        
+        # Calculate population-level impact
+        population_impact = self.impact_calculator.calculate_population_impact(
+            total_patients=total_patients,
+            avg_adherence_score=avg_adherence,
+            baseline_adherence=60.0  # Typical baseline without intervention
+        )
+        
+        # Calculate patient-specific impacts
+        patient_impacts = {}
+        for patient_id, result in patient_results.items():
+            daily_scores = [d["analysis"]["adherence_score"]["total_score"] 
+                          for d in result["daily_results"]]
+            final_risk = result["final_risk"]
+            
+            patient_impact = self.impact_calculator.calculate_patient_specific_impact(
+                patient_adherence_scores=daily_scores,
+                patient_risk_level=final_risk
+            )
+            patient_impacts[patient_id] = patient_impact
+        
+        return {
+            "population_impact": population_impact,
+            "patient_specific_impacts": patient_impacts
+        }
+    
+    def _print_clinical_impact(self, clinical_impact: Dict):
+        """Print clinical impact metrics."""
+        
+        impact = clinical_impact["population_impact"]
+        
+        print("\n" + "=" * 60)
+        print("CLINICAL IMPACT ANALYSIS")
+        print("=" * 60)
+        print(f"Patients Monitored: {impact['patients_monitored']}")
+        print(f"Average Adherence Achieved: {impact['avg_adherence_score']}/100")
+        print(f"Adherence Improvement vs Baseline: +{impact['adherence_improvement_over_baseline']}%")
+        print(f"\n📊 PROJECTED OUTCOMES (30-Day Window):")
+        print(f"  • Readmissions Prevented: {impact['readmissions_prevented']}")
+        print(f"  • Readmission Reduction Rate: {impact['readmission_reduction_rate']}")
+        print(f"  • Hospital Bed Days Saved: {impact['hospital_bed_days_saved']}")
+        print(f"  • Estimated Lives Saved: {impact['estimated_lives_saved']}")
+        print(f"\n💰 FINANCIAL IMPACT:")
+        print(f"  • Gross Cost Savings: {impact['cost_savings_gross']}")
+        print(f"  • Monitoring Costs: {impact['monitoring_costs']}")
+        print(f"  • Net Savings: {impact['cost_savings_net']}")
+        print(f"  • Return on Investment: {impact['roi']}")
+        print(f"\n📚 EVIDENCE QUALITY: {impact['evidence_quality']}")
+        print(f"Methodology: {impact['methodology']}")
+        print("\nKey Citations:")
+        for i, citation in enumerate(impact['citations'][:3], 1):
+            print(f"  {i}. {citation}")
         print("=" * 60)
     
     def export_results(self, results: Dict, output_file: str = "simulation_results.json"):
